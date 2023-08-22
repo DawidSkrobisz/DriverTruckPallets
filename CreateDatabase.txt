@@ -12,7 +12,6 @@ CREATE TABLE Truck (
                        truck_id INT PRIMARY KEY,
                        model VARCHAR(255),
                        license_plate VARCHAR(20),
-                       mileage INT,
                        vin_number VARCHAR(50),
                        inspection_date DATE,
                        insurance_date DATE
