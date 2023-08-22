@@ -1,10 +1,10 @@
 package entity;
 
 import jakarta.persistence.*;
-import lombok.EqualsAndHashCode;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 import org.jetbrains.annotations.NotNull;
+
+import java.time.Instant;
 import java.time.LocalDate;
 
 
@@ -13,6 +13,8 @@ import java.time.LocalDate;
 @EqualsAndHashCode
 @Getter
 @Setter
+@AllArgsConstructor
+@NoArgsConstructor
 public class TruckDriver {
 
     @Id
@@ -26,32 +28,14 @@ public class TruckDriver {
     public String lastName;
 
     @NotNull
-    public LocalDate psychoDate;
+    public Instant psychoDate;
 
     @NotNull
-    public LocalDate medDate;
+    public Instant medDate;
 
     @NotNull
-    public LocalDate driverLicenseDate;
+    public Instant driverLicenseDate;
 
-    public TruckDriver(Long id, @NotNull String firstName, @NotNull String lastName, @NotNull LocalDate psychoDate, @NotNull LocalDate medDate, @NotNull LocalDate driverLicenseDate) {
-        this.id = id;
-        this.firstName = firstName;
-        this.lastName = lastName;
-        this.psychoDate = psychoDate;
-        this.medDate = medDate;
-        this.driverLicenseDate = driverLicenseDate;
-    }
 
-    public TruckDriver() {
 
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public Long getId() {
-        return id;
-    }
 }

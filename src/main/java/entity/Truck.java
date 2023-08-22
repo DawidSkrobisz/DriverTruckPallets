@@ -2,6 +2,7 @@ package entity;
 
 import jakarta.persistence.Id;
 
+import java.time.Instant;
 import java.time.LocalDate;
 
 public class Truck {
@@ -13,12 +14,11 @@ public class Truck {
 
     public String truckPlates;
 
-    public Integer distanceTruck;
-
     public Integer vinNumber;
 
-    public LocalDate serviceDate;
+    public Instant serviceDate;
 
-    public LocalDate insuranceDate;
+    public Instant insuranceDate;
+
 
 }
