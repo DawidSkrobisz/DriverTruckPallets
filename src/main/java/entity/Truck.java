@@ -1,23 +1,31 @@
 package entity;
 
-import jakarta.persistence.Id;
-
+import jakarta.persistence.*;
+import lombok.*;
+import org.jetbrains.annotations.NotNull;
 import java.time.Instant;
-import java.time.LocalDate;
 
+@Entity
+@Table(name = "truck")
+@EqualsAndHashCode
+@Getter
+@Setter
+@AllArgsConstructor
+@NoArgsConstructor
 public class Truck {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     public Long id;
-
+    @NotNull
     public String truckModel;
-
+    @NotNull
     public String truckPlates;
-
+    @NotNull
     public Integer vinNumber;
-
+    @NotNull
     public Instant serviceDate;
-
+    @NotNull
     public Instant insuranceDate;
 
 

@@ -3,10 +3,7 @@ package entity;
 import jakarta.persistence.*;
 import lombok.*;
 import org.jetbrains.annotations.NotNull;
-
 import java.time.Instant;
-import java.time.LocalDate;
-
 
 @Entity
 @Table(name = "driver")
@@ -35,7 +32,5 @@ public class TruckDriver {
 
     @NotNull
     public Instant driverLicenseDate;
-
-
 
 }
