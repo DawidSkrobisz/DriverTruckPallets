@@ -17,10 +17,13 @@ public class Company {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     public Long id;
     @NotNull
+    @Column(name="companyName")
     public String companyName;
     @NotNull
+    @Column(name="companyAdress")
     public String companyAdress;
     @NotNull
+    @Column(name="companyVat")
     public String companyVat;
 
 }

@@ -18,15 +18,19 @@ public class Truck {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     public Long id;
     @NotNull
+    @Column(name="model")
     public String truckModel;
     @NotNull
+    @Column(name="license_plate")
     public String truckPlates;
     @NotNull
+    @Column(name="vin_number")
     public Integer vinNumber;
     @NotNull
+    @Column(name="inspection_date")
     public Instant serviceDate;
     @NotNull
+    @Column(name="insurance_date")
     public Instant insuranceDate;
-
 
 }
