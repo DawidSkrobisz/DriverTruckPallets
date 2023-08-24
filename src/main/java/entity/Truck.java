@@ -32,5 +32,8 @@ public class Truck {
     @NotNull
     @Column(name="insurance_date")
     public Instant insuranceDate;
+    @NotNull
+    //dopisać adnotację Column i stworzyć tabelę w bazie danych
+    public Integer acctualSaldoPallets;
 
 }

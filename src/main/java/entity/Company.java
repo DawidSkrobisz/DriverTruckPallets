@@ -25,5 +25,9 @@ public class Company {
     @NotNull
     @Column(name="companyVat")
     public String companyVat;
+    @NotNull
+    public Integer acctualPlusSaldo;
+    @NotNull
+    public Integer acctualDebtSaldo;
 
 }
