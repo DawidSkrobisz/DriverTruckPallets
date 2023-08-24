@@ -20,6 +20,8 @@ public class Loading {
     @NotNull
     public String companyName;
     @NotNull
+    public Integer loadedPallets;
+    @NotNull
     public Integer deliveryPallets;
     @NotNull
     public Integer retournedPallets;
@@ -31,6 +33,7 @@ public class Loading {
     @Enumerated(EnumType.STRING)
     public Status status;
 
+    @Column(name="saldoFromLoading")
     public Integer saldoPallets() {
         return deliveryPallets - retournedPallets;
     }
