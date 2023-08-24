@@ -38,4 +38,6 @@ public class TruckDriver {
     @Column(name="license_expiry_date")
     public Instant driverLicenseDate;
 
+    public void saveTruckDriver(TruckDriver truckDriver) {
+    }
 }

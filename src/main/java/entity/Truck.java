@@ -4,6 +4,8 @@ import jakarta.persistence.*;
 import lombok.*;
 import org.jetbrains.annotations.NotNull;
 import java.time.Instant;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Table(name = "truck")
@@ -17,23 +19,40 @@ public class Truck {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     public Long id;
+
     @NotNull
     @Column(name="model")
     public String truckModel;
+
     @NotNull
     @Column(name="license_plate")
     public String truckPlates;
+
     @NotNull
     @Column(name="vin_number")
     public Integer vinNumber;
+
     @NotNull
     @Column(name="inspection_date")
     public Instant serviceDate;
+
     @NotNull
     @Column(name="insurance_date")
     public Instant insuranceDate;
+
     @NotNull
     //dopisać adnotację Column i stworzyć tabelę w bazie danych
     public Integer acctualSaldoPallets;
+
+    @ManyToMany
+    @JoinTable(
+            name = "truck_company",
+            joinColumns = @JoinColumn(name = "truck_id"),
+            inverseJoinColumns = @JoinColumn(name = "company_id")
+    )
+    private List<Company> companies = new ArrayList<>();
+
+    @OneToMany(mappedBy = "truck")
+    private List<Loading> loadings = new ArrayList<>();
 
 }

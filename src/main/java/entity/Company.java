@@ -33,10 +33,10 @@ public class Company {
     public String companyVat;
 
     @NotNull
-    public Integer acctualPlusSaldo;
+    public Integer currentPlusSaldo;
 
     @NotNull
-    public Integer acctualDebtSaldo;
+    public Integer currentDebtSaldo;
 
     @OneToMany(mappedBy = "company")
     private List<Loading> loadings = new ArrayList<>();
