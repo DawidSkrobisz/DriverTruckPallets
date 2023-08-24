@@ -44,14 +44,6 @@ public class Truck {
     //dopisać adnotację Column i stworzyć tabelę w bazie danych
     public Integer acctualSaldoPallets;
 
-    @ManyToMany
-    @JoinTable(
-            name = "truck_company",
-            joinColumns = @JoinColumn(name = "truck_id"),
-            inverseJoinColumns = @JoinColumn(name = "company_id")
-    )
-    private List<Company> companies = new ArrayList<>();
-
     @OneToMany(mappedBy = "truck")
     private List<Loading> loadings = new ArrayList<>();
 

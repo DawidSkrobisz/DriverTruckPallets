@@ -44,6 +44,10 @@ public class Loading {
     @JoinColumn(name = "company_id")
     private Company company;
 
+    @ManyToOne
+    @JoinColumn(name = "truck_id")
+    private Truck truck;
+
     @Column(name = "saldoFromLoading")
     public Integer saldoPallets() {
         return deliveryPallets - retournedPallets;

@@ -32,12 +32,6 @@ public class Company {
     @Column(name="companyVat")
     public String companyVat;
 
-    @NotNull
-    public Integer currentPlusSaldo;
-
-    @NotNull
-    public Integer currentDebtSaldo;
-
     @OneToMany(mappedBy = "company")
     private List<Loading> loadings = new ArrayList<>();
 

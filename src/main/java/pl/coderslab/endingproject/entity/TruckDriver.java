@@ -1,4 +1,4 @@
-package entity;
+package pl.coderslab.endingproject.entity;
 
 import jakarta.persistence.*;
 import lombok.*;
@@ -16,7 +16,7 @@ public class TruckDriver {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    public Long id;
+    public Long driverId;
 
     @NotNull
     @Column(name="first_name")
@@ -27,7 +27,7 @@ public class TruckDriver {
     public String lastName;
 
     @NotNull
-    @Column(name="psycho_test_date")
+    @Column(name="psych_test_date")
     public Instant psychoDate;
 
     @NotNull
@@ -38,6 +38,5 @@ public class TruckDriver {
     @Column(name="license_expiry_date")
     public Instant driverLicenseDate;
 
-    public void saveTruckDriver(TruckDriver truckDriver) {
-    }
+
 }
