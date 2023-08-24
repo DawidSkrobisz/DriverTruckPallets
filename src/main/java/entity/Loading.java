@@ -33,6 +33,10 @@ public class Loading {
     @Enumerated(EnumType.STRING)
     public Status status;
 
+    @ManyToOne
+    @JoinColumn(name = "company_id")
+    private Company company;
+
     @Column(name="saldoFromLoading")
     public Integer saldoPallets() {
         return deliveryPallets - retournedPallets;
