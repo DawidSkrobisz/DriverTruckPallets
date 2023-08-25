@@ -21,23 +21,23 @@ public class Truck {
     public Long id;
 
     @NotNull
-    @Column(name="model")
+    @Column(name="truckModel")
     public String truckModel;
 
     @NotNull
-    @Column(name="license_plate")
+    @Column(name="truckPlates")
     public String truckPlates;
 
     @NotNull
-    @Column(name="vin_number")
+    @Column(name="vinNumber")
     public Integer vinNumber;
 
     @NotNull
-    @Column(name="inspection_date")
+    @Column(name="serviceDate")
     public Instant serviceDate;
 
     @NotNull
-    @Column(name="insurance_date")
+    @Column(name="insuranceDate")
     public Instant insuranceDate;
 
     @NotNull

@@ -19,23 +19,23 @@ public class TruckDriver {
     public Long driverId;
 
     @NotNull
-    @Column(name="first_name")
+    @Column(name="firstName")
     public String firstName;
 
     @NotNull
-    @Column(name="last_name")
+    @Column(name="lastName")
     public String lastName;
 
     @NotNull
-    @Column(name="psych_test_date")
-    public Instant psychoDate;
+    @Column(name="psychoTestDate")
+    public Instant psychoTestDate;
 
     @NotNull
-    @Column(name="medical_test_date")
-    public Instant medDate;
+    @Column(name="medTestDate")
+    public Instant medTestDate;
 
     @NotNull
-    @Column(name="license_expiry_date")
+    @Column(name="driverLicenseDate")
     public Instant driverLicenseDate;
 
 

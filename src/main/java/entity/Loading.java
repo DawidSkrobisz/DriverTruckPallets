@@ -54,6 +54,6 @@ public class Loading {
     }
 
     public static enum Status {
-        NEW, COMPLETED, ARCHIVED; //doczytać
+        NEW, COMPLETED, ARCHIVED;
     }
 }
