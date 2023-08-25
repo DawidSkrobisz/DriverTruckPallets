@@ -19,7 +19,6 @@ public class TruckDriverController {
     @RequestMapping("/add")
     @ResponseBody
     public String addTruckDriver(@ModelAttribute TruckDriver truckDriver) {
-        truckDriver.setDriverId(generateUniqueDriverId());
         truckDriver.setFirstName("John");
         truckDriver.setLastName("Kielbowski");
         truckDriver.setDriverLicenseDate(Instant.now());
@@ -29,10 +28,6 @@ public class TruckDriverController {
         return "Dodano kierowcę do bazy!";
     }
 
-    private Long generateUniqueDriverId() {
-        // Tutaj generuj unikalne ID, na przykład na podstawie czasu lub innej logiki
-        return System.currentTimeMillis();
-    }
 
     @GetMapping("/get")
     @ResponseBody
