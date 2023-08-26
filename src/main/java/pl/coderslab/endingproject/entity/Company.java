@@ -1,6 +1,5 @@
 package pl.coderslab.endingproject.entity;
 
-import entity.Loading;
 import jakarta.persistence.*;
 import lombok.*;
 import org.jetbrains.annotations.NotNull;

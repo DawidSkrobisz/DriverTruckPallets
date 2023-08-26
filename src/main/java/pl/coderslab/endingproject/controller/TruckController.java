@@ -1,12 +1,9 @@
 package pl.coderslab.endingproject.controller;
 
 
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 import pl.coderslab.endingproject.dao.TruckDao;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestMapping;
 import pl.coderslab.endingproject.entity.Truck;
 
 import java.time.Instant;
@@ -23,37 +20,67 @@ public class TruckController {
 
     @RequestMapping("/add")
     @ResponseBody
-    public String addTruckDriver(@ModelAttribute Truck truck) {
-        truck.setTruckModel("MAN TGA");
-        truck.setTruckPlates("WGR667W");
-        truck.setVinNumber("WVW2982493483958");
-        truck.setServiceDate(Instant.now());
-        truck.setInsuranceDate(Instant.now());
-        truck.setAcctualSaldoPallets(33);
+    public String addTruckDriver(
+            @RequestParam String truckModel,
+            @RequestParam String truckPlates,
+            @RequestParam String vinNumber,
+            @RequestParam Instant serviceDate,
+            @RequestParam Instant insuranceDate,
+            @RequestParam int acctualSaldoPallets) {
+        Truck truck = new Truck();
+        truck.setTruckModel(truckModel);
+        truck.setTruckPlates(truckPlates);
+        truck.setVinNumber(vinNumber);
+        truck.setServiceDate(serviceDate);
+        truck.setInsuranceDate(insuranceDate);
+        truck.setAcctualSaldoPallets(acctualSaldoPallets);
         truckDao.saveTruck(truck);
         return "Dodano ciężarówkę do bazy danych";
     }
 
-    @GetMapping("/get")
+
+    @GetMapping("/get/{truckId}")
     @ResponseBody
-    public Truck getTruck() {
-        return truckDao.findByIdTruck(1L);
+    public String getTruck(@PathVariable Long truckId) {
+        Truck truck = truckDao.findByIdTruck(truckId);
+
+        if (truck != null) {
+            return truck.toString();
+        } else {
+            return "Truck o ID " + truckId + " nie istnieje.";
+        }
     }
+
+
 
     @ResponseBody
     @GetMapping("/update")
-    public Truck updateTruck() {
-        Truck truck = truckDao.findByIdTruck(1L);
-        truck.setTruckModel("Volvo");
-        truckDao.updateTruck(truck);
-        return truck;
+    public String updateTruck(
+            @RequestParam Long truckId,
+            @RequestParam String newTruckModel) {
+        Truck truck = truckDao.findByIdTruck(truckId);
+        if (truck != null) {
+            truck.setTruckModel(newTruckModel);
+            truckDao.updateTruck(truck);
+            return "Zaktualizowano trucka o ID " + truckId;
+        } else {
+            return "Truck o podanym ID nie istnieje";
+        }
     }
+
+
 
     @ResponseBody
     @GetMapping("/delete")
-    public String delete() {
-        Truck truck = truckDao.findByIdTruck(1L);
-        truckDao.deleteTruck(truck);
-        return "Skasowano kierowcę";
+    public String delete(
+            @RequestParam Long truckId) {
+        Truck truck = truckDao.findByIdTruck(truckId);
+        if (truck != null) {
+            truckDao.deleteTruck(truck);
+            return "Usunięto trucka o ID " + truckId;
+        } else {
+            return "Truck o podanym ID nie istnieje";
+        }
     }
+
 }

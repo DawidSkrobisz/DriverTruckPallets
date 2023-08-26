@@ -1,15 +1,13 @@
-package entity;
+package pl.coderslab.endingproject.entity;
 
 import jakarta.persistence.*;
 import lombok.*;
 import org.jetbrains.annotations.NotNull;
-import pl.coderslab.endingproject.entity.Company;
-import pl.coderslab.endingproject.entity.Truck;
 
 import java.time.LocalDate;
 
 @Entity
-@Table(name = "")
+@Table(name = "palette")
 @EqualsAndHashCode
 @Getter
 @Setter
@@ -19,7 +17,7 @@ public class Loading {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    public Long id;
+    public Long paletteId;
 
     @NotNull
     public String companyName;
@@ -28,31 +26,31 @@ public class Loading {
     public Integer loadedPallets;
 
     @NotNull
-    public Integer deliveryPallets;
+    public Integer exchangedPallets;
 
     @NotNull
-    public Integer retournedPallets;
+    public Integer returnedPallets;
 
     @NotNull
     public LocalDate loadingDate;
 
     @NotNull
-    public String loadingNumer;
+    public String loadingNumber;
 
     @Enumerated(EnumType.STRING)
     public Status status;
 
-    @ManyToOne
+    /*@ManyToOne
     @JoinColumn(name = "company_id")
     private Company company;
 
     @ManyToOne
     @JoinColumn(name = "truck_id")
-    private Truck truck;
+    private Truck truck;*/
 
     @Column(name = "saldoFromLoading")
     public Integer saldoPallets() {
-        return deliveryPallets - retournedPallets;
+        return loadedPallets - returnedPallets;
     }
 
     public static enum Status {

@@ -7,7 +7,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import pl.coderslab.endingproject.dao.CompanyDao;
 import pl.coderslab.endingproject.entity.Company;
-import pl.coderslab.endingproject.entity.Truck;
 
 @Controller
 @RequestMapping("/company")

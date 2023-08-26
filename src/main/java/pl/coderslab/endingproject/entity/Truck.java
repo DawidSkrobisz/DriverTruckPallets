@@ -1,6 +1,5 @@
 package pl.coderslab.endingproject.entity;
 
-import entity.Loading;
 import jakarta.persistence.*;
 import lombok.*;
 import org.jetbrains.annotations.NotNull;
@@ -45,7 +44,20 @@ public class Truck {
     @Column(name="acctualSaldoPallets")
     public Integer acctualSaldoPallets;
 
-   /* @OneToMany(mappedBy = "truck")
+    @Override
+    public String toString() {
+        return "Truck{" +
+                "truckId=" + truckId +
+                ", truckModel='" + truckModel + '\'' +
+                ", truckPlates='" + truckPlates + '\'' +
+                ", vinNumber='" + vinNumber + '\'' +
+                ", serviceDate=" + serviceDate +
+                ", insuranceDate=" + insuranceDate +
+                ", acctualSaldoPallets=" + acctualSaldoPallets +
+                '}';
+    }
+
+    /* @OneToMany(mappedBy = "truck")
     private List<Loading> loadings = new ArrayList<>();*/
 
 }
