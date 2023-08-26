@@ -1,14 +1,20 @@
-package dao;
+package pl.coderslab.endingproject.dao;
 
-import entity.Truck;
+import jakarta.persistence.PersistenceContext;
+import jakarta.transaction.Transactional;
+import org.springframework.stereotype.Repository;
+import pl.coderslab.endingproject.entity.Truck;
 import jakarta.persistence.EntityManager;
 
+@Repository
+@Transactional
 public class TruckDao {
-
+    @PersistenceContext
     private EntityManager entityManager;
 
+
     public void saveTruck(Truck truck) {
-        entityManager.persist(truck);
+        entityManager.merge(truck);
     }
 
     public Truck findByIdTruck(long id) {

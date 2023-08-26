@@ -1,5 +1,6 @@
-package entity;
+package pl.coderslab.endingproject.entity;
 
+import entity.Loading;
 import jakarta.persistence.*;
 import lombok.*;
 import org.jetbrains.annotations.NotNull;
@@ -18,7 +19,7 @@ public class Truck {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    public Long id;
+    public Long truckId;
 
     @NotNull
     @Column(name="truckModel")
@@ -30,7 +31,7 @@ public class Truck {
 
     @NotNull
     @Column(name="vinNumber")
-    public Integer vinNumber;
+    public String vinNumber;
 
     @NotNull
     @Column(name="serviceDate")
@@ -41,10 +42,10 @@ public class Truck {
     public Instant insuranceDate;
 
     @NotNull
-    //dopisać adnotację Column i stworzyć tabelę w bazie danych
+    @Column(name="acctualSaldoPallets")
     public Integer acctualSaldoPallets;
 
-    @OneToMany(mappedBy = "truck")
-    private List<Loading> loadings = new ArrayList<>();
+   /* @OneToMany(mappedBy = "truck")
+    private List<Loading> loadings = new ArrayList<>();*/
 
 }

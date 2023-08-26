@@ -38,5 +38,4 @@ public class TruckDriver {
     @Column(name="driverLicenseDate")
     public Instant driverLicenseDate;
 
-
 }
