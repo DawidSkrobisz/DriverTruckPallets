@@ -3,6 +3,7 @@ package entity;
 import jakarta.persistence.*;
 import lombok.*;
 import org.jetbrains.annotations.NotNull;
+import pl.coderslab.endingproject.entity.Company;
 import pl.coderslab.endingproject.entity.Truck;
 
 import java.time.LocalDate;

@@ -1,5 +1,6 @@
-package entity;
+package pl.coderslab.endingproject.entity;
 
+import entity.Loading;
 import jakarta.persistence.*;
 import lombok.*;
 import org.jetbrains.annotations.NotNull;
@@ -18,7 +19,7 @@ public class Company {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    public Long id;
+    public Long companyId;
 
     @NotNull
     @Column(name="companyName")
@@ -32,7 +33,7 @@ public class Company {
     @Column(name="companyVat")
     public String companyVat;
 
-    @OneToMany(mappedBy = "company")
-    private List<Loading> loadings = new ArrayList<>();
+   /* @OneToMany(mappedBy = "company")
+    private List<Loading> loadings = new ArrayList<>();*/
 
 }
