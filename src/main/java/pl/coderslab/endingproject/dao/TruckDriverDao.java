@@ -30,4 +30,8 @@ public class TruckDriverDao {
     public void updateTruckDriver(TruckDriver truckDriver) {
         entityManager.merge(truckDriver);
     }
+
+    public void delete(TruckDriver truckDriver) {
+        entityManager.remove(entityManager.contains(truckDriver) ? truckDriver : entityManager.merge(truckDriver));
+    }
 }

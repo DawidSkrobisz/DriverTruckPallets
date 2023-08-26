@@ -19,8 +19,8 @@ public class TruckDriverController {
     @RequestMapping("/add")
     @ResponseBody
     public String addTruckDriver(@ModelAttribute TruckDriver truckDriver) {
-        truckDriver.setFirstName("John");
-        truckDriver.setLastName("Kielbowski");
+        truckDriver.setFirstName("Anrew");
+        truckDriver.setLastName("Kowaleski");
         truckDriver.setDriverLicenseDate(Instant.now());
         truckDriver.setPsychoTestDate(Instant.now());
         truckDriver.setMedTestDate(Instant.now());
@@ -28,19 +28,26 @@ public class TruckDriverController {
         return "Dodano kierowcę do bazy!";
     }
 
-
     @GetMapping("/get")
     @ResponseBody
     public TruckDriver getTruckDriver() {
-       return truckDriverDao.getTruckDriver(1L);
+        return truckDriverDao.getTruckDriver(3L);
     }
 
     @ResponseBody
     @GetMapping("/update")
     public TruckDriver updateTruckDriver() {
         TruckDriver truckDriver = truckDriverDao.getTruckDriver(1L);
-        truckDriver.setFirstName("Roman");
+        truckDriver.setFirstName("Michail");
         truckDriverDao.updateTruckDriver(truckDriver);
         return truckDriver;
+    }
+
+    @ResponseBody
+    @GetMapping("/delete")
+    public String delete() {
+        TruckDriver truckDriver = truckDriverDao.getTruckDriver(1L);
+        truckDriverDao.delete(truckDriver);
+        return "Skasowano kierowcę";
     }
 }
