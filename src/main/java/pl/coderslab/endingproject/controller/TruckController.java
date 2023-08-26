@@ -1,7 +1,6 @@
 package pl.coderslab.endingproject.controller;
 
 
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import pl.coderslab.endingproject.dao.TruckDao;
 import org.springframework.stereotype.Controller;
@@ -38,8 +37,6 @@ public class TruckController {
         truckDao.saveTruck(truck);
         return "Dodano ciężarówkę do bazy danych";
     }
-
-
 
     @GetMapping("/get/{truckId}")
     @ResponseBody
