@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Truck List</title>
+</head>
+<body>
+<h2>Truck List</h2>
+<ul>
+    <li th:each="truck : ${trucks}">
+        <a th:href="@{/truck/details/{id}(id=${truck.id})}"><span th:text="${truck.truckModel}"></span></a>
+    </li>
+</ul>
+</body>
+</html>

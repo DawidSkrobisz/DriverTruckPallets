@@ -7,10 +7,10 @@ import pl.coderslab.endingproject.dao.TruckDao;
 import org.springframework.stereotype.Controller;
 import pl.coderslab.endingproject.entity.Truck;
 
-import java.awt.print.Book;
 import java.time.Instant;
 import java.time.LocalDate;
 import java.time.ZoneId;
+import java.util.List;
 
 @Controller
 @RequestMapping("/truck")
@@ -44,7 +44,7 @@ public class TruckController {
 
     @RequestMapping("/add")
     @ResponseBody
-    public String addTruckDriver(
+    public String addTruck(
             @RequestParam String truckModel,
             @RequestParam String truckPlates,
             @RequestParam String vinNumber,
@@ -76,11 +76,28 @@ public class TruckController {
         if (truck != null) {
             return truck.toString();
         } else {
-            return "Truck o ID " + truckId + " nie istnieje.";
+            return "Ciężarówka o ID " + truckId + " nie istnieje.";
         }
     }
 
+    @GetMapping("/list")
+    public String listTrucks(Model model) {
+        List<Truck> trucks = truckDao.getAllTrucks();
+        model.addAttribute("trucks", trucks);
+        return "truck/truck-list";
+    }
 
+    @GetMapping("/get/{truckId}/details")
+    public String showTruckDetails(@PathVariable Long truckId, Model model) {
+        Truck truck = truckDao.findByIdTruck(truckId);
+
+        if (truck != null) {
+            model.addAttribute("truck", truck);
+            return "truck/get-truck";
+        } else {
+            return "error";
+        }
+    }
 
     @ResponseBody
     @GetMapping("/update")
@@ -91,9 +108,9 @@ public class TruckController {
         if (truck != null) {
             truck.setTruckModel(newTruckModel);
             truckDao.updateTruck(truck);
-            return "Zaktualizowano trucka o ID " + truckId;
+            return "Zaktualizowano ciężarówkę o ID " + truckId;
         } else {
-            return "Truck o podanym ID nie istnieje";
+            return "Ciężarówka o ID nie istnieje";
         }
     }
 
@@ -106,9 +123,9 @@ public class TruckController {
         Truck truck = truckDao.findByIdTruck(truckId);
         if (truck != null) {
             truckDao.deleteTruck(truck);
-            return "Usunięto trucka o ID " + truckId;
+            return "Usunięto ciężarówkę o ID " + truckId;
         } else {
-            return "Truck o podanym ID nie istnieje";
+            return "Ciężarówka o ID nie istnieje";
         }
     }
 
