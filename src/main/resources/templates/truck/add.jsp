@@ -23,7 +23,7 @@
     <label for="acctualSaldoPallets">Aktualne saldo palet:</label>
     <input type="number" id="acctualSaldoPallets" name="acctualSaldoPallets"><br><br>
 
-    <input type="submit" value="Add Truck">
+    <input type="submit" value="Dodaj ciężarówkę">
 </form>
 </body>
 </html>

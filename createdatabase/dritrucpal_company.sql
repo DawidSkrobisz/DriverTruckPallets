@@ -1,8 +1,3 @@
--- MySQL dump 10.13  Distrib 8.0.33, for Win64 (x86_64)
---
--- Host: localhost    Database: dritrucpal
--- ------------------------------------------------------
--- Server version	8.0.33
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;

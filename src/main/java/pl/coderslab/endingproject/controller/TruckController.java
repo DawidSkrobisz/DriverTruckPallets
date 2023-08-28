@@ -29,19 +29,6 @@ public class TruckController {
         return "truck/add";
     }
 
-    @PostMapping("/add-truck")
-    @ResponseBody
-    public String getAdd(@ModelAttribute("truck") Truck truck) {
-        return truck.getTruckPlates() + ", " + truck.getTruckModel();
-    }
-
-    @GetMapping("/add-truck")
-    public String formAddTruck(Model model) {
-        Truck truck = new Truck();
-        model.addAttribute("truck", truck);
-        return "truck/add";
-    }
-
     @RequestMapping("/add")
     @ResponseBody
     public String addTruck(
@@ -84,7 +71,7 @@ public class TruckController {
     public String listTrucks(Model model) {
         List<Truck> trucks = truckDao.getAllTrucks();
         model.addAttribute("trucks", trucks);
-        return "truck/truck-list";
+        return "truck-list.jsp";
     }
 
     @GetMapping("/get/{truckId}/details")
