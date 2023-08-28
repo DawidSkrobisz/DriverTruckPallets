@@ -56,12 +56,12 @@ public class TruckController {
     }
 
     @GetMapping("/get/{truckId}")
-    @ResponseBody
-    public String getTruck(@PathVariable Long truckId) {
+    public String getTruck(@PathVariable Long truckId, Model model) {
         Truck truck = truckDao.findByIdTruck(truckId);
 
         if (truck != null) {
-            return truck.toString();
+            model.addAttribute("truck", truck);
+            return "truck/get-truck";
         } else {
             return "Ciężarówka o ID " + truckId + " nie istnieje.";
         }
@@ -71,7 +71,7 @@ public class TruckController {
     public String listTrucks(Model model) {
         List<Truck> trucks = truckDao.getAllTrucks();
         model.addAttribute("trucks", trucks);
-        return "truck-list.jsp";
+        return "truck/truck-list";
     }
 
     @GetMapping("/get/{truckId}/details")
@@ -100,7 +100,6 @@ public class TruckController {
             return "Ciężarówka o ID nie istnieje";
         }
     }
-
 
 
     @ResponseBody
