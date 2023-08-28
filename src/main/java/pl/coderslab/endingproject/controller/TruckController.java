@@ -74,18 +74,6 @@ public class TruckController {
         return "truck/truck-list";
     }
 
-    @GetMapping("/get/{truckId}/details")
-    public String showTruckDetails(@PathVariable Long truckId, Model model) {
-        Truck truck = truckDao.findByIdTruck(truckId);
-
-        if (truck != null) {
-            model.addAttribute("truck", truck);
-            return "truck/get-truck";
-        } else {
-            return "error";
-        }
-    }
-
     @ResponseBody
     @GetMapping("/update")
     public String updateTruck(

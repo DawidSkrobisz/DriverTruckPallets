@@ -1,30 +1,35 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <title>Truck Details</title>
+    <title>Szczegóły ciężarówki</title>
 </head>
 <body>
-<h2>Truck Details</h2>
+<h2>Szczegóły ciężarówki</h2>
 <p>
-
 <table>
     <tr>
         <th>ID</th>
         <th>Model</th>
-        <th>Color</th>
-        <th>Price</th>
+        <th>Numery rejestracyjne</th>
+        <th>Numer VIN</th>
+        <th>Data następnego przeglądu</th>
+        <th>Data końca ubezpieczenia</th>
+        <th>Aktualny stan palet</th>
     </tr>
     <tr>
         <td th:text="${truck.truckId}"></td>
         <td th:text="${truck.truckModel}"></td>
         <td th:text="${truck.truckPlates}"></td>
         <td th:text="${truck.vinNumber}"></td>
+        <td th:text="${truck.serviceDate}"></td>
+        <td th:text="${truck.insuranceDate}"></td>
+        <td th:text="${truck.acctualSaldoPallets}"></td>
     </tr>
 </table>
-
 </p>
 <p>
-    <a href="/truck/list">Back to Truck List</a>
+    <a href="/truck/list">Wróć do listy pojazdów</a>
+    <a href="/truck/add">Dodaj nową ciężarówkę</a>
 </p>
 </body>
 </html>

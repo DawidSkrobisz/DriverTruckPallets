@@ -1,29 +1,33 @@
-<html>
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
-     <title>Dodaj ciężarówkę</title>
+    <title>Dodaj ciężarówkę</title>
 </head>
 <body>
 <h2>Dodaj nową ciężarówkę</h2>
 <form action="/truck/add" method="post" th:object="${truck}">
     <label for="truckModel">Model ciężarówki:</label>
-    <input type="text" id="truckModel" name="truckModel" th:modelAttribute="truck"><br><br>
+    <input type="text" id="truckModel" name="truckModel" th:modelAttribute="truck" required><br><br>
 
     <label for="truckPlates">Numery rejestracyjne:</label>
-    <input type="text" id="truckPlates" name="truckPlates"><br><br>
+    <input type="text" id="truckPlates" name="truckPlates" required><br><br>
 
     <label for="vinNumber">Numer VIN:</label>
-    <input type="text" id="vinNumber" name="vinNumber"><br><br>
+    <input type="text" id="vinNumber" name="vinNumber" required><br><br>
 
     <label for="serviceDate">Data następnego przeglądu:</label>
-    <input type="date" id="serviceDate" name="serviceDateStr"><br><br>
+    <input type="date" id="serviceDate" name="serviceDateStr" required><br><br>
 
     <label for="insuranceDate">Data końca ubezpieczenia:</label>
-    <input type="date" id="insuranceDate" name="insuranceDateStr"><br><br>
+    <input type="date" id="insuranceDate" name="insuranceDateStr" required><br><br>
 
     <label for="acctualSaldoPallets">Aktualne saldo palet:</label>
-    <input type="number" id="acctualSaldoPallets" name="acctualSaldoPallets"><br><br>
+    <input type="number" id="acctualSaldoPallets" name="acctualSaldoPallets" required><br><br>
 
     <input type="submit" value="Dodaj ciężarówkę">
 </form>
+<p>
+    <a href="/truck/list">Wróć do listy pojazdów</a>
+</p>
 </body>
 </html>

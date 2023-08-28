@@ -1,23 +1,25 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <title>Truck List</title>
+    <title>Lista ciężarówek</title>
 </head>
 <body>
-<h2>Truck List</h2>
-<table border="1">
+<h2>Lista ciężarówek</h2>
+<table>
     <tr>
         <th>ID</th>
         <th>Model</th>
-        <th>Color</th>
-        <th>Price</th>
+        <th>Tablice rejestracyjne</th>
     </tr>
     <tr th:each="truck : ${trucks}">
-        <td th:text="${truck.truckId}"></td>
+        <td><a th:href="@{/truck/get/{id}(id=${truck.truckId})}" th:text="${truck.truckId}"></a></td>
+        <td th:text="${truck.truckPlates}"></td>
         <td th:text="${truck.truckModel}"></td>
-        <td th:text="${truck.vinNumber}"></td>
-        <td th:text="${truck.serviceDate}"></td>
     </tr>
 </table>
+<p>
+    <a href="/truck/list">Wróć do listy pojazdów</a>
+    <a href="/truck/add">Dodaj nową ciężarówkę</a>
+</p>
 </body>
 </html>
