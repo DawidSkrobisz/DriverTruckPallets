@@ -1,35 +1,82 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html lang="en">
 <head>
+    <meta charset="UTF-8">
     <title>Szczegóły ciężarówki</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #afa0a0;
+        }
+
+        .container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            background-color: #afa0a0;
+        }
+
+        h2 {
+            font-size: 28px;
+            margin-bottom: 20px;
+        }
+
+        table {
+            width: 80%;
+            max-width: 800px;
+            background-color: white;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            margin-top: 20px;
+        }
+
+        th, td {
+            padding: 10px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #27e7cd;
+            color: white;
+        }
+
+        .back-links {
+            margin-top: 20px;
+            text-align: center;
+        }
+    </style>
 </head>
 <body>
-<h2>Szczegóły ciężarówki</h2>
-<p>
-<table>
-    <tr>
-        <th>ID</th>
-        <th>Model</th>
-        <th>Numery rejestracyjne</th>
-        <th>Numer VIN</th>
-        <th>Data następnego przeglądu</th>
-        <th>Data końca ubezpieczenia</th>
-        <th>Aktualny stan palet</th>
-    </tr>
-    <tr>
-        <td th:text="${truck.truckId}"></td>
-        <td th:text="${truck.truckModel}"></td>
-        <td th:text="${truck.truckPlates}"></td>
-        <td th:text="${truck.vinNumber}"></td>
-        <td th:text="${truck.serviceDate}"></td>
-        <td th:text="${truck.insuranceDate}"></td>
-        <td th:text="${truck.acctualSaldoPallets}"></td>
-    </tr>
-</table>
-</p>
-<p>
-    <a href="/truck/list">Wróć do listy pojazdów</a>
-    <a href="/truck/add">Dodaj nową ciężarówkę</a>
-</p>
+<div class="container">
+    <h2>Szczegóły ciężarówki</h2>
+    <table>
+        <tr>
+            <th>ID</th>
+            <th>Model</th>
+            <th>Numery rejestracyjne</th>
+            <th>Numer VIN</th>
+            <th>Data następnego przeglądu</th>
+            <th>Data końca ubezpieczenia</th>
+            <th>Aktualny stan palet</th>
+        </tr>
+        <tr>
+            <td th:text="${truck.truckId}"></td>
+            <td th:text="${truck.truckModel}"></td>
+            <td th:text="${truck.truckPlates}"></td>
+            <td th:text="${truck.vinNumber}"></td>
+            <td th:text="${truck.serviceDate}"></td>
+            <td th:text="${truck.insuranceDate}"></td>
+            <td th:text="${truck.acctualSaldoPallets}"></td>
+        </tr>
+    </table>
+    <p class="back-links">
+        <a href="/truck/list">Wróć do listy pojazdów</a>
+        <a href="/truck/add">Dodaj nową ciężarówkę</a>
+    </p>
+</div>
 </body>
 </html>

@@ -1,31 +1,96 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html lang="en">
 <head>
+    <meta charset="UTF-8">
     <title>Dodaj kierowcę</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #afa0a0;
+        }
+
+        .container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            background-color: #afa0a0;
+        }
+
+        h2 {
+            font-size: 28px;
+            margin-bottom: 20px;
+        }
+
+        form {
+            width: 80%;
+            max-width: 600px;
+            background-color: white;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+        }
+
+        label {
+            display: block;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+
+        input[type="text"],
+        input[type="date"] {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        input[type="submit"] {
+            background-color: #27e7cd;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #1aa794;
+        }
+
+        .back-link {
+            margin-top: 20px;
+            text-align: center;
+        }
+    </style>
 </head>
 <body>
-<h2>Dodaj nowego kierowcę</h2>
-<form action="/truckdriver/add" method="post" th:object="${truckDriver}">
-    <label for="firstName">Imię:</label>
-    <input type="text" id="firstName" name="firstName" required><br><br>
+<div class="container">
+    <h2>Dodaj nowego kierowcę</h2>
+    <form action="/truckdriver/add" method="post" th:object="${truckDriver}">
+        <label for="firstName">Imię:</label>
+        <input type="text" id="firstName" name="firstName" required>
 
-    <label for="lastName">Nazwisko:</label>
-    <input type="text" id="lastName" name="lastName" required><br><br>
+        <label for="lastName">Nazwisko:</label>
+        <input type="text" id="lastName" name="lastName" required>
 
-    <label for="psychoTestDate">Data badania psychotechnicznego:</label>
-    <input type="date" id="psychoTestDate" name="psychoTestDate" ><br><br>
+        <label for="psychoTestDate">Data badania psychotechnicznego:</label>
+        <input type="date" id="psychoTestDate" name="psychoTestDate" required>
 
-    <label for="medTestDate">Data badania medycznego:</label>
-    <input type="date" id="medTestDate" name="medTestDate" ><br><br>
+        <label for="medTestDate">Data badania medycznego:</label>
+        <input type="date" id="medTestDate" name="medTestDate" required>
 
-    <label for="driverLicenseDate">Data uzyskania prawa jazdy:</label>
-    <input type="date" id="driverLicenseDate" name="driverLicenseDate" ><br><br>
+        <label for="driverLicenseDate">Data uzyskania prawa jazdy:</label>
+        <input type="date" id="driverLicenseDate" name="driverLicenseDate" required>
 
-
-    <input type="submit" value="Dodaj kierowcę">
-</form>
-<p>
-    <a href="/truckdriver/list">Wróć do listy kierowców</a>
-</p>
+        <input type="submit" value="Dodaj kierowcę">
+    </form>
+    <p class="back-link">
+        <a href="/truckdriver/list">Wróć do listy kierowców</a>
+    </p>
+</div>
 </body>
 </html>

@@ -1,10 +1,93 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org" lang="">
+<html lang="en">
 <head>
+    <meta charset="UTF-8">
     <title>Lista firm</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #afa0a0;
+        }
+
+        .container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            background-color: #afa0a0;
+        }
+
+        h2 {
+            font-size: 28px;
+            margin-bottom: 20px;
+        }
+
+        table {
+            border-collapse: collapse;
+            width: 80%;
+            max-width: 800px;
+            background-color: white;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            margin-top: 20px;
+        }
+
+        th, td {
+            padding: 10px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #27e7cd;
+            color: white;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+
+        .action-links a {
+            text-decoration: none;
+            margin-right: 10px;
+            color: #27e7cd;
+        }
+
+        .action-links a:hover {
+            color: #1aa794;
+        }
+
+        .back-links {
+            margin-top: 20px;
+        }
+    </style>
 </head>
 <body>
-<h2>Lista firm</h2>
+<div class="container">
+    <h2>Lista firm</h2>
+    <table>
+        <tr>
+            <th>ID</th>
+            <th>Nazwa</th>
+            <th>NIP</th>
+            <th>Akcje</th>
+        </tr>
+        <tr th:each="company : ${companys}">
+            <td><a th:href="@{/company/get/{id}(id=${company.companyId})}" th:text="${company.companyId}"></a></td>
+            <td th:text="${company.companyName}"></td>
+            <td th:text="${company.companyVat}"></td>
+            <td class="action-links">
+                <a th:href="@{|/company/edit/${company.companyId}|}">Edytuj</a>
+                <a th:href="@{|/company/delete?id=${company.companyId}|}" class="delete-link">Usuń</a>
+            </td>
+        </tr>
+    </table>
+    <div class="back-links">
+        <a href="/index.html">Wróć do strony głównej</a>
+        <a href="/company/add">Dodaj nową firmę</a>
+    </div>
+</div>
 <script>
     document.addEventListener('DOMContentLoaded', () => {
         document.querySelectorAll('.delete-link').forEach(link => {
@@ -16,26 +99,5 @@
         });
     });
 </script>
-<table>
-    <tr>
-        <th>ID</th>
-        <th>Nazwa</th>
-        <th>NIP</th>
-        <th>Akcje</th>
-    </tr>
-    <tr th:each="company : ${companys}">
-        <td><a th:href="@{/company/get/{id}(id=${company.companyId})}" th:text="${company.companyId}"></a></td>
-        <td th:text="${company.companyName}"></td>
-        <td th:text="${company.companyVat}"></td>
-        <td>
-            <a th:href="@{|/company/edit/${company.companyId}|}">Edytuj</a>
-            <a th:href="@{|/company/delete?id=${company.companyId}|}" class="delete-link">Usuń</a>
-        </td>
-    </tr>
-</table>
-<p>
-    <a href="/index.html">Wróć do strony głównej</a>
-    <a href="/company/add">Dodaj nową firmę</a>
-</p>
 </body>
 </html>

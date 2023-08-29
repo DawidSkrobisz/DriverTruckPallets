@@ -1,29 +1,80 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html lang="en">
 <head>
+    <meta charset="UTF-8">
     <title>Szczegóły firmy</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #afa0a0;
+        }
+
+        .container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            background-color: #afa0a0;
+        }
+
+        h2 {
+            font-size: 28px;
+            margin-bottom: 20px;
+        }
+
+        table {
+            width: 80%;
+            max-width: 800px;
+            background-color: white;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            margin-top: 20px;
+        }
+
+        th, td {
+            padding: 10px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #27e7cd;
+            color: white;
+        }
+
+        p {
+            margin-top: 20px;
+        }
+
+        .back-links {
+            margin-top: 20px;
+            text-align: center;
+        }
+    </style>
 </head>
 <body>
-<h2>Szczegóły firmy</h2>
-<p>
-<table>
-    <tr>
-        <th>ID</th>
-        <th>Nazwa firmy</th>
-        <th>Adres</th>
-        <th>Numer NIP</th>
-    </tr>
-    <tr>
-        <td th:text="${company.companyId}"></td>
-        <td th:text="${company.companyName}"></td>
-        <td th:text="${company.companyAdress}"></td>
-        <td th:text="${company.companyVat}"></td>
-    </tr>
-</table>
-</p>
-<p>
-    <a href="/company/list">Wróć do listy firm</a>
-    <a href="/company/add">Dodaj nową firmę</a>
-</p>
+<div class="container">
+    <h2>Szczegóły firmy</h2>
+    <table>
+        <tr>
+            <th>ID</th>
+            <th>Nazwa firmy</th>
+            <th>Adres</th>
+            <th>Numer NIP</th>
+        </tr>
+        <tr>
+            <td th:text="${company.companyId}"></td>
+            <td th:text="${company.companyName}"></td>
+            <td th:text="${company.companyAdress}"></td>
+            <td th:text="${company.companyVat}"></td>
+        </tr>
+    </table>
+    <p class="back-links">
+        <a href="/company/list">Wróć do listy firm</a>
+        <a href="/company/add">Dodaj nową firmę</a>
+    </p>
+</div>
 </body>
 </html>

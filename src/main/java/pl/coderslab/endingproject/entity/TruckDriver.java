@@ -3,6 +3,7 @@ package pl.coderslab.endingproject.entity;
 import jakarta.persistence.*;
 import lombok.*;
 import org.jetbrains.annotations.NotNull;
+
 import java.time.Instant;
 
 @Entity
@@ -19,23 +20,23 @@ public class TruckDriver {
     public Long driverId;
 
     @NotNull
-    @Column(name="firstName")
+    @Column(name = "firstName")
     public String firstName;
 
     @NotNull
-    @Column(name="lastName")
+    @Column(name = "lastName")
     public String lastName;
 
-
-    @Column(name="psychoTestDate")
+    @NotNull
+    @Column(name = "psychoTestDate")
     public Instant psychoTestDate;
 
-
-    @Column(name="medTestDate")
+    @NotNull
+    @Column(name = "medTestDate")
     public Instant medTestDate;
 
-
-    @Column(name="driverLicenseDate")
+    @NotNull
+    @Column(name = "driverLicenseDate")
     public Instant driverLicenseDate;
 
 }

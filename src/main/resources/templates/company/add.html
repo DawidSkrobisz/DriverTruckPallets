@@ -1,24 +1,89 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html lang="en">
 <head>
+    <meta charset="UTF-8">
     <title>Dodaj firmę</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #afa0a0;
+        }
+
+        .container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            background-color: #afa0a0;
+        }
+
+        h2 {
+            font-size: 28px;
+            margin-bottom: 20px;
+        }
+
+        form {
+            width: 80%;
+            max-width: 600px;
+            background-color: white;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+        }
+
+        label {
+            display: block;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+
+        input[type="text"] {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        input[type="submit"] {
+            background-color: #27e7cd;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #1aa794;
+        }
+
+        .back-link {
+            margin-top: 20px;
+            text-align: center;
+        }
+    </style>
 </head>
 <body>
-<h2>Dodaj nową firmę</h2>
-<form action="/company/add" method="post" th:object="${company}">
-    <label for="companyName">Nazwa firmy:</label>
-    <input type="text" id="companyName" name="companyName" required><br><br>
+<div class="container">
+    <h2>Dodaj nową firmę</h2>
+    <form action="/company/add" method="post" th:object="${company}">
+        <label for="companyName">Nazwa firmy:</label>
+        <input type="text" id="companyName" name="companyName" required>
 
-    <label for="companyAdress">Adres firmy:</label>
-    <input type="text" id="companyAdress" name="companyAdress" required><br><br>
+        <label for="companyAdress">Adres firmy:</label>
+        <input type="text" id="companyAdress" name="companyAdress" required>
 
-    <label for="companyVat">Numer NIP:</label>
-    <input type="text" id="companyVat" name="companyVat" required><br><br>
+        <label for="companyVat">Numer NIP:</label>
+        <input type="text" id="companyVat" name="companyVat" required>
 
-    <input type="submit" value="Dodaj firmę">
-</form>
-<p>
-    <a href="/company/list">Wróć do listy firm</a>
-</p>
+        <input type="submit" value="Dodaj firmę">
+    </form>
+    <div class="back-link">
+        <a href="/company/list">Wróć do listy firm</a>
+    </div>
+</div>
 </body>
 </html>
