@@ -5,6 +5,17 @@
 </head>
 <body>
 <h2>Lista ciężarówek</h2>
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        document.querySelectorAll('.delete-link').forEach(link => {
+            link.addEventListener('click', event => {
+                if (!confirm('Czy na pewno chcesz usunąć tę ciężarówkę?')) {
+                    event.preventDefault();
+                }
+            });
+        });
+    });
+</script>
 <table>
     <tr>
         <th>ID</th>
