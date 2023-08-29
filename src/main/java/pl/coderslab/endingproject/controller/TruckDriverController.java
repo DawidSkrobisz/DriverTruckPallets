@@ -1,5 +1,6 @@
 package pl.coderslab.endingproject.controller;
 
+import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import pl.coderslab.endingproject.dao.TruckDriverDao;
 import pl.coderslab.endingproject.entity.Company;
@@ -9,7 +10,7 @@ import org.springframework.web.bind.annotation.*;
 import java.time.Instant;
 import java.util.List;
 
-@RestController
+@Controller
 @RequestMapping("/truckdriver")
 public class TruckDriverController {
 
@@ -22,11 +23,13 @@ public class TruckDriverController {
     @GetMapping("/add")
     public String showAddTruckDriverForm(Model model) {
         TruckDriver truckDriver = new TruckDriver();
-        model.addAttribute("truckDriver", new TruckDriver());
+        model.addAttribute("truckDriver", truckDriver);
         return "truckdriver/add";
     }
 
+
     @PostMapping("/add")
+    @ResponseBody
     public String addTruckDriver(@RequestParam Long driverId,
                                  @RequestParam String firstName,
                                  @RequestParam String lastName,
@@ -48,10 +51,8 @@ public class TruckDriverController {
     public String listTrucksDrivers(Model model) {
         List<TruckDriver> truckDrivers = truckDriverDao.getAllDrivers();
         model.addAttribute("truckDrivers", truckDrivers);
-        return "company/list";
+        return "truckdriver/list";
     }
-
-
 
     @GetMapping("/get")
     @ResponseBody

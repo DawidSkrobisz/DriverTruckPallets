@@ -22,7 +22,7 @@ public class CompanyController {
     @GetMapping("/add")
     public String formAddCompany(Model model) {
         Company company = new Company();
-        model.addAttribute("company", company);
+        model.addAttribute("company",new Company());
         return "company/add";
     }
 
