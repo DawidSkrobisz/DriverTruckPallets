@@ -1,12 +1,13 @@
 package pl.coderslab.endingproject.controller;
 
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.*;
 import pl.coderslab.endingproject.dao.CompanyDao;
 import pl.coderslab.endingproject.entity.Company;
+import pl.coderslab.endingproject.entity.Truck;
+
+import java.util.List;
 
 @Controller
 @RequestMapping("/company")
@@ -18,14 +19,32 @@ public class CompanyController {
         this.companyDao = companyDao;
     }
 
+    @GetMapping("/add")
+    public String formAddCompany(Model model) {
+        Company company = new Company();
+        model.addAttribute("company", company);
+        return "company/add";
+    }
+
+
     @RequestMapping("/add")
     @ResponseBody
-    public String addCompany(@ModelAttribute Company company) {
-        company.setCompanyName("Intereuropol");
-        company.setCompanyAdress("Marki");
-        company.setCompanyVat("151-151-26-26");
+    public String addCompany(@RequestParam String companyName,
+                             @RequestParam String companyAdress,
+                             @RequestParam String companyVat) {
+        Company company = new Company();
+        company.setCompanyName(companyName);
+        company.setCompanyAdress(companyAdress);
+        company.setCompanyVat(companyVat);
         companyDao.saveCompany(company);
         return "Dodano nową firmę";
+    }
+
+    @GetMapping("/list")
+    public String listTrucks(Model model) {
+        List<Company> companys = companyDao.getAllCompanys();
+        model.addAttribute("companys", companys);
+        return "company/list";
     }
 
     @GetMapping("/get")

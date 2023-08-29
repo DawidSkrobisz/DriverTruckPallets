@@ -74,6 +74,20 @@ public class TruckController {
         return "truck/truck-list";
     }
 
+    @PostMapping("/update")
+    public String updateTruck(@ModelAttribute Truck truck) {
+        Long truckId = truck.getTruckId();
+        Truck existingTruck = truckDao.findByIdTruck(truckId);
+
+        if (existingTruck != null) {
+            existingTruck.setTruckModel(truck.getTruckModel());
+            truckDao.updateTruck(existingTruck);
+            return "redirect:/truck/list";
+        } else {
+            return "error";
+        }
+    }
+
     @ResponseBody
     @GetMapping("/update")
     public String updateTruck(
@@ -88,14 +102,6 @@ public class TruckController {
             return "Ciężarówka o ID nie istnieje";
         }
     }
-
-/*    @PostMapping("/update")
-    public String updateTruck(@ModelAttribute Truck truck, @RequestParam Long truckId) {
-        truck.setTruckId(truckId);
-        truckDao.updateTruck(truck);
-        return "redirect:/truck/get/" + truck.getTruckId();
-    }*/
-
 
 
     @ResponseBody

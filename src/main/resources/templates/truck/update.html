@@ -6,8 +6,8 @@
 </head>
 <body>
 <h1>Update Truck</h1>
-<form action="#" th:action="@{/truck/update}" th:object="${truck}" method="post">
-    <input type="hidden" id="id" name="id" th:value="*{truck.truckid}">
+<form action="@{/truck/update}" th:object="${truck}" method="post">
+    <input type="hidden" th:field="*{truck.truckId}">
 
     <label for="truckModel">Truck Model:</label><br>
     <input type="text" id="truckModel" name="truckModel" th:field="*{truck.truckModel}"><br>

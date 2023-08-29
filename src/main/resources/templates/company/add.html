@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Dodaj firmę</title>
+</head>
+<body>
+<h2>Dodaj nową firmę</h2>
+<form action="/company/add" method="post" th:object="${company}">
+    <label for="companyName">Nazwa firmy:</label>
+    <input type="text" id="companyName" name="companyName" required><br><br>
+
+    <label for="companyAdress">Adres firmy:</label>
+    <input type="text" id="companyAdress" name="companyAdress" required><br><br>
+
+    <label for="companyVat">Numer NIP:</label>
+    <input type="text" id="companyVat" name="companyVat" required><br><br>
+
+    <input type="submit" value="Dodaj firmę">
+</form>
+<p>
+    <a href="/company/list">Wróć do listy firm</a>
+</p>
+</body>
+</html>
