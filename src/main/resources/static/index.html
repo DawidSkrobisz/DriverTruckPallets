@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Strona Główna</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f0f0f0;
+        }
+
+        .square {
+            width: 200px;
+            height: 200px;
+            border: 2px solid blue;
+            text-align: center;
+            line-height: 200px;
+            font-size: 24px;
+            font-weight: bold;
+            margin: 20px;
+            display: inline-block;
+            color: black; /
+            text-decoration: none;
+        }
+
+        .square:hover {
+            background-color: lightgray;
+        }
+
+        .square:visited {
+            color: black;
+        }
+    </style>
+</head>
+<body>
+<div class="square">
+    <a href="truckdriver/list">Kierowcy</a>
+</div>
+<div class="square">
+    <a href="truck/list">Ciężarówki</a>
+</div>
+<div class="square">
+    <a href="company/list">Firmy</a>
+</div>
+<div class="square">
+    <a href="loading/list">Załadunki</a>
+</div>
+</body>
+</html>
