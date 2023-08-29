@@ -47,10 +47,16 @@ public class CompanyController {
         return "company/list";
     }
 
-    @GetMapping("/get")
-    @ResponseBody
-    public Company getCompany() {
-        return companyDao.findByIdCompany(1L);
+    @GetMapping("/get/{companyId}")
+    public String getTruck(@PathVariable Long companyId, Model model) {
+        Company company = companyDao.findByIdCompany(companyId);
+
+        if (company != null) {
+            model.addAttribute("company", company);
+            return "company/get";
+        } else {
+            return "Firma o ID " + companyId + " nie istnieje.";
+        }
     }
 
     @ResponseBody

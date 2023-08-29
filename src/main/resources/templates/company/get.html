@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Szczegóły firmy</title>
+</head>
+<body>
+<h2>Szczegóły firmy</h2>
+<p>
+<table>
+    <tr>
+        <th>ID</th>
+        <th>Nazwa firmy</th>
+        <th>Adres</th>
+        <th>Numer NIP</th>
+    </tr>
+    <tr>
+        <td th:text="${company.companyId}"></td>
+        <td th:text="${company.companyName}"></td>
+        <td th:text="${company.companyAdress}"></td>
+        <td th:text="${company.companyVat}"></td>
+    </tr>
+</table>
+</p>
+<p>
+    <a href="/truck/list">Wróć do listy firm</a>
+    <a href="/truck/add">Dodaj nową firmę</a>
+</p>
+</body>
+</html>
