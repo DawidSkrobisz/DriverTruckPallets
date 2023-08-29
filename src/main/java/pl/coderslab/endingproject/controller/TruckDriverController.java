@@ -1,10 +1,13 @@
 package pl.coderslab.endingproject.controller;
 
+import org.springframework.ui.Model;
 import pl.coderslab.endingproject.dao.TruckDriverDao;
+import pl.coderslab.endingproject.entity.Company;
 import pl.coderslab.endingproject.entity.TruckDriver;
 import org.springframework.web.bind.annotation.*;
 
 import java.time.Instant;
+import java.util.List;
 
 @RestController
 @RequestMapping("/truckdriver")
@@ -16,17 +19,39 @@ public class TruckDriverController {
         this.truckDriverDao = truckDriverDao;
     }
 
-    @RequestMapping("/add")
-    @ResponseBody
-    public String addTruckDriver(@ModelAttribute TruckDriver truckDriver) {
-        truckDriver.setFirstName("Anrew");
-        truckDriver.setLastName("Kowaleski");
-        truckDriver.setDriverLicenseDate(Instant.now());
-        truckDriver.setPsychoTestDate(Instant.now());
-        truckDriver.setMedTestDate(Instant.now());
-        truckDriverDao.saveTruckDriver(truckDriver);
-        return "Dodano kierowcę do bazy!";
+    @GetMapping("/add")
+    public String showAddTruckDriverForm(Model model) {
+        TruckDriver truckDriver = new TruckDriver();
+        model.addAttribute("truckDriver", new TruckDriver());
+        return "truckdriver/add";
     }
+
+    @PostMapping("/add")
+    public String addTruckDriver(@RequestParam Long driverId,
+                                 @RequestParam String firstName,
+                                 @RequestParam String lastName,
+                                 @RequestParam Instant psychoTestDate,
+                                 @RequestParam Instant medTestDate,
+                                 @RequestParam Instant driverLicenseDate) {
+        TruckDriver truckDriver = new TruckDriver();
+        truckDriver.setDriverId(driverId);
+        truckDriver.setFirstName(firstName);
+        truckDriver.setLastName(lastName);
+        truckDriver.setPsychoTestDate(psychoTestDate);
+        truckDriver.setMedTestDate(medTestDate);
+        truckDriver.setDriverLicenseDate(driverLicenseDate);
+        truckDriverDao.saveTruckDriver(truckDriver);
+        return "redirect:/truckdriver/list";
+    }
+
+    @GetMapping("/list")
+    public String listTrucksDrivers(Model model) {
+        List<TruckDriver> truckDrivers = truckDriverDao.getAllDrivers();
+        model.addAttribute("truckDrivers", truckDrivers);
+        return "company/list";
+    }
+
+
 
     @GetMapping("/get")
     @ResponseBody

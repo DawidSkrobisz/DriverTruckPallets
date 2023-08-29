@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Dodaj kierowcę</title>
+</head>
+<body>
+<h2>Dodaj nowego kierowcę</h2>
+<form action="/truckdriver/add" method="post" th:object="${truckDriver}">
+    <label for="firstName">Imię:</label>
+    <input type="text" id="firstName" name="firstName" required><br><br>
+
+    <label for="lastName">Nazwisko:</label>
+    <input type="text" id="lastName" name="lastName" required><br><br>
+
+    <label for="driverLicenseDate">Data uzyskania prawa jazdy:</label>
+    <input type="date" id="driverLicenseDate" name="driverLicenseDate" required><br><br>
+
+    <label for="psychoTestDate">Data badania psychotechnicznego:</label>
+    <input type="date" id="psychoTestDate" name="psychoTestDate" required><br><br>
+
+    <label for="medTestDate">Data badania medycznego:</label>
+    <input type="date" id="medTestDate" name="medTestDate" required><br><br>
+
+    <input type="submit" value="Dodaj kierowcę">
+</form>
+<p>
+    <a href="/truckdriver/list">Wróć do listy kierowców</a>
+</p>
+</body>
+</html>
