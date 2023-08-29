@@ -89,6 +89,14 @@ public class TruckController {
         }
     }
 
+/*    @PostMapping("/update")
+    public String updateTruck(@ModelAttribute Truck truck, @RequestParam Long truckId) {
+        truck.setTruckId(truckId);
+        truckDao.updateTruck(truck);
+        return "redirect:/truck/get/" + truck.getTruckId();
+    }*/
+
+
 
     @ResponseBody
     @GetMapping("/delete")

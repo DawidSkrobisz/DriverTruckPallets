@@ -32,7 +32,7 @@ public class Company {
     @Column(name="companyVat")
     public String companyVat;
 
-   /* @OneToMany(mappedBy = "company")
-    private List<Loading> loadings = new ArrayList<>();*/
+    @OneToMany(mappedBy = "company")
+    private List<Loading> loadings = new ArrayList<>();
 
 }

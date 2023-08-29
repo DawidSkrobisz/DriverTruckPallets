@@ -40,13 +40,13 @@ public class Loading {
     @Enumerated(EnumType.STRING)
     public Status status;
 
-    /*@ManyToOne
+    @ManyToOne
     @JoinColumn(name = "company_id")
     private Company company;
 
     @ManyToOne
     @JoinColumn(name = "truck_id")
-    private Truck truck;*/
+    private Truck truck;
 
     @Column(name = "saldoFromLoading")
     public Integer saldoPallets() {

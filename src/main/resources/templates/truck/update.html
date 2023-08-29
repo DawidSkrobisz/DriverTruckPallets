@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Update Truck</title>
+</head>
+<body>
+<h1>Update Truck</h1>
+<form action="#" th:action="@{/truck/update}" th:object="${truck}" method="post">
+    <input type="hidden" id="id" name="id" th:value="*{truck.truckid}">
+
+    <label for="truckModel">Truck Model:</label><br>
+    <input type="text" id="truckModel" name="truckModel" th:field="*{truck.truckModel}"><br>
+
+    <label for="truckPlates">Truck Plates:</label><br>
+    <input type="text" id="truckPlates" name="truckPlates" th:field="*{truck.truckPlates}"><br>
+
+    <label for="vinNumber">VIN Number:</label><br>
+    <input type="text" id="vinNumber" name="vinNumber" th:field="*{truck.vinNumber}"><br>
+
+    <label for="serviceDateStr">Service Date:</label><br>
+    <input type="text" id="serviceDateStr" name="serviceDateStr" th:field="*{truck.serviceDateStr}"><br>
+
+    <label for="insuranceDateStr">Insurance Date:</label><br>
+    <input type="text" id="insuranceDateStr" name="insuranceDateStr" th:field="*{truck.insuranceDateStr}"><br>
+
+    <label for="acctualSaldoPallets">Actual Saldo Pallets:</label><br>
+    <input type="number" id="acctualSaldoPallets" name="acctualSaldoPallets" th:field="*{truck.acctualSaldoPallets}"><br>
+
+    <button type="submit">Update Truck</button>
+</form>
+</body>
+</html>

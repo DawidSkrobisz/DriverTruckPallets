@@ -57,7 +57,7 @@ public class Truck {
                 '}';
     }
 
-    /* @OneToMany(mappedBy = "truck")
-    private List<Loading> loadings = new ArrayList<>();*/
+     @OneToMany(mappedBy = "truck")
+    private List<Loading> loadings = new ArrayList<>();
 
 }
