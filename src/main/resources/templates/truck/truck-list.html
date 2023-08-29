@@ -18,19 +18,20 @@
 </script>
 <table>
     <tr>
-        <th>ID</th>
         <th>Model</th>
         <th>Tablice rejestracyjne</th>
         <th>Akcje</th>
     </tr>
     <tr th:each="truck : ${trucks}">
-        <td><a th:href="@{/truck/get/{id}(id=${truck.truckId})}" th:text="${truck.truckId}"></a></td>
         <td th:text="${truck.truckPlates}"></td>
         <td th:text="${truck.truckModel}"></td>
-        <td><a th:href="@{|/truck/delete?id=${truck.truckId}|}" class="delete-link">Usuń</a></td>
+        <td>
+            <a th:href="@{|/truck/details/${truck.truckId}|}">Szczegóły</a>
+            <a th:href="@{|/truck/delete?id=${truck.truckId}|}" class="delete-link">Usuń</a>
+        </td>
     </tr>
-
 </table>
+
 <p>
     <a href="/truck/list">Wróć do listy pojazdów</a>
     <a href="/truck/add">Dodaj nową ciężarówkę</a>

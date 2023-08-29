@@ -55,17 +55,18 @@ public class TruckController {
         return "Dodano ciężarówkę do bazy danych";
     }
 
-    @GetMapping("/get/{truckId}")
-    public String getTruck(@PathVariable Long truckId, Model model) {
+    @GetMapping("/details/{truckId}")
+    public String truckDetails(@PathVariable Long truckId, Model model) {
         Truck truck = truckDao.findByIdTruck(truckId);
 
         if (truck != null) {
             model.addAttribute("truck", truck);
             return "truck/get-truck";
         } else {
-            return "Ciężarówka o ID " + truckId + " nie istnieje.";
+            return "error";
         }
     }
+
 
     @GetMapping("/list")
     public String listTrucks(Model model) {
@@ -103,20 +104,6 @@ public class TruckController {
         }
     }
 
-
-/*    @ResponseBody
-    @GetMapping("/delete")
-    public String delete(
-            @RequestParam Long truckId) {
-        Truck truck = truckDao.findByIdTruck(truckId);
-        if (truck != null) {
-            truckDao.deleteTruck(truck);
-            return "Usunięto ciężarówkę o ID " + truckId;
-        } else {
-            return "Ciężarówka o ID nie istnieje";
-        }
-    }*/
-
     @GetMapping("/delete")
     public String deleteTruck(@RequestParam Long id) {
         Truck truck = truckDao.findByIdTruck(id);
@@ -125,7 +112,4 @@ public class TruckController {
         }
         return "redirect:/truck/list"; // Przekierowanie na listę ciężarówek
     }
-
-
-
 }
