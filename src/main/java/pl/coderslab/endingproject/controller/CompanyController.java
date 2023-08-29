@@ -68,11 +68,13 @@ public class CompanyController {
         return company;
     }
 
-    @ResponseBody
     @GetMapping("/delete")
-    public String deleteCompany() {
-        Company company = companyDao.findByIdCompany(1L);
-        companyDao.deleteCompany(company);
-        return "Skasowano firmę";
+    public String deleteCompany(@RequestParam Long id) {
+        Company company = companyDao.findByIdCompany(id);
+        if (company != null) {
+            companyDao.deleteCompany(company);
+        }
+        return "redirect:/company/list";
     }
+
 }

@@ -1,6 +1,5 @@
 package pl.coderslab.endingproject.controller;
 
-
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import pl.coderslab.endingproject.dao.TruckDao;
@@ -67,7 +66,6 @@ public class TruckController {
         }
     }
 
-
     @GetMapping("/list")
     public String listTrucks(Model model) {
         List<Truck> trucks = truckDao.getAllTrucks();
@@ -110,6 +108,6 @@ public class TruckController {
         if (truck != null) {
             truckDao.deleteTruck(truck);
         }
-        return "redirect:/truck/list"; // Przekierowanie na listę ciężarówek
+        return "redirect:/truck/list";
     }
 }

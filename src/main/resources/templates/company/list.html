@@ -5,16 +5,32 @@
 </head>
 <body>
 <h2>Lista firm</h2>
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        document.querySelectorAll('.delete-link').forEach(link => {
+            link.addEventListener('click', event => {
+                if (!confirm('Czy na pewno chcesz usunąć tę firmę?')) {
+                    event.preventDefault();
+                }
+            });
+        });
+    });
+</script>
 <table>
     <tr>
         <th>ID</th>
         <th>Nazwa</th>
         <th>NIP</th>
+        <th>Akcje</th>
     </tr>
     <tr th:each="company : ${companys}">
         <td><a th:href="@{/company/get/{id}(id=${company.companyId})}" th:text="${company.companyId}"></a></td>
         <td th:text="${company.companyName}"></td>
         <td th:text="${company.companyVat}"></td>
+        <td>
+            <a th:href="@{|/company/edit/${company.companyId}|}">Edytuj</a>
+            <a th:href="@{|/company/delete?id=${company.companyId}|}" class="delete-link">Usuń</a>
+        </td>
     </tr>
 </table>
 <p>
