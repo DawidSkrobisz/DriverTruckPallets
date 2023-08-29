@@ -6,7 +6,6 @@ import jakarta.persistence.TypedQuery;
 import jakarta.transaction.Transactional;
 import org.springframework.stereotype.Repository;
 import pl.coderslab.endingproject.entity.Company;
-import pl.coderslab.endingproject.entity.Truck;
 
 import java.util.List;
 

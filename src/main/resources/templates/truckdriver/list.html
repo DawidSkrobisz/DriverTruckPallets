@@ -1,10 +1,47 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org" lang="">
 <head>
-    <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Lista kierowców</title>
 </head>
 <body>
-
+<h2>Lista kierowców</h2>
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        document.querySelectorAll('.delete-link').forEach(link => {
+            link.addEventListener('click', event => {
+                if (!confirm('Czy na pewno chcesz usunąć tego kierowcę?')) {
+                    event.preventDefault();
+                }
+            });
+        });
+    });
+</script>
+<table>
+    <tr>
+        <th>ID</th>
+        <th>Imię</th>
+        <th>Nazwisko</th>
+        <th>Data badania psychotechnicznego</th>
+        <th>Data badania medycznego</th>
+        <th>Data uzyskania prawa jazdy</th>
+        <th>Akcje</th>
+    </tr>
+    <tr th:each="driver : ${truckDrivers}">
+        <td><a th:href="@{/truckdriver/get/{id}(id=${driver.driverId})}" th:text="${driver.driverId}"></a></td>
+        <td th:text="${driver.firstName}"></td>
+        <td th:text="${driver.lastName}"></td>
+        <td th:text="${#dates.format(driver.psychoTestDate, 'yyyy-MM-dd')}"></td>
+        <td th:text="${#dates.format(driver.medTestDate, 'yyyy-MM-dd')}"></td>
+        <td th:text="${#dates.format(driver.driverLicenseDate, 'yyyy-MM-dd')}"></td>
+        <td>
+            <a th:href="@{|/truckdriver/edit/${driver.driverId}|}">Edytuj</a>
+            <a th:href="@{|/truckdriver/delete?id=${driver.driverId}|}" class="delete-link">Usuń</a>
+        </td>
+    </tr>
+</table>
+<p>
+    <a href="/index.html">Wróć do strony głównej</a>
+    <a href="/truckdriver/add">Dodaj nowego kierowcę</a>
+</p>
 </body>
 </html>

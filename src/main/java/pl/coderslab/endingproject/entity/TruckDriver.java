@@ -26,15 +26,15 @@ public class TruckDriver {
     @Column(name="lastName")
     public String lastName;
 
-    @NotNull
+
     @Column(name="psychoTestDate")
     public Instant psychoTestDate;
 
-    @NotNull
+
     @Column(name="medTestDate")
     public Instant medTestDate;
 
-    @NotNull
+
     @Column(name="driverLicenseDate")
     public Instant driverLicenseDate;
 

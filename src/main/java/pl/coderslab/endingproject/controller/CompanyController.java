@@ -5,7 +5,6 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import pl.coderslab.endingproject.dao.CompanyDao;
 import pl.coderslab.endingproject.entity.Company;
-import pl.coderslab.endingproject.entity.Truck;
 
 import java.util.List;
 
@@ -22,23 +21,23 @@ public class CompanyController {
     @GetMapping("/add")
     public String formAddCompany(Model model) {
         Company company = new Company();
-        model.addAttribute("company",new Company());
+        model.addAttribute("company", new Company());
         return "company/add";
     }
 
-
     @RequestMapping("/add")
-    @ResponseBody
-    public String addCompany(@RequestParam String companyName,
-                             @RequestParam String companyAdress,
-                             @RequestParam String companyVat) {
+    public String addCompany(
+            @RequestParam String companyName,
+            @RequestParam String companyAdress,
+            @RequestParam String companyVat) {
         Company company = new Company();
         company.setCompanyName(companyName);
         company.setCompanyAdress(companyAdress);
         company.setCompanyVat(companyVat);
         companyDao.saveCompany(company);
-        return "Dodano nową firmę";
+        return "redirect:/company/list";
     }
+
 
     @GetMapping("/list")
     public String listTrucks(Model model) {

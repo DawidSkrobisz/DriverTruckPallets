@@ -48,9 +48,7 @@ public class TruckController {
         truck.setServiceDate(serviceDate);
         truck.setInsuranceDate(insuranceDate);
         truck.setAcctualSaldoPallets(acctualSaldoPallets);
-
         truckDao.saveTruck(truck);
-
         return "Dodano ciężarówkę do bazy danych";
     }
 
