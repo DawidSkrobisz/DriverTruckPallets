@@ -104,7 +104,7 @@ public class TruckController {
     }
 
 
-    @ResponseBody
+/*    @ResponseBody
     @GetMapping("/delete")
     public String delete(
             @RequestParam Long truckId) {
@@ -115,6 +115,19 @@ public class TruckController {
         } else {
             return "Ciężarówka o ID nie istnieje";
         }
+    }*/
+
+    @GetMapping("/delete")
+    @ResponseBody
+    public String deleteTruck(@RequestParam Long id) {
+        Truck truck = truckDao.findByIdTruck(id);
+        if (truck != null) {
+            truckDao.deleteTruck(truck);
+            return "Usunięto ciężarówkę o ID " + id;
+        } else {
+            return "Ciężarówka o ID nie istnieje";
+        }
     }
+
 
 }
