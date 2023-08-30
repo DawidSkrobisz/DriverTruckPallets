@@ -1,10 +1,84 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Szczegóły kierowcy</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #afa0a0;
+        }
+
+        .container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            background-color: #afa0a0;
+        }
+
+        h2 {
+            font-size: 28px;
+            margin-bottom: 20px;
+        }
+
+        table {
+            width: 80%;
+            max-width: 800px;
+            background-color: white;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            margin-top: 20px;
+        }
+
+        th, td {
+            padding: 10px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #27e7cd;
+            color: white;
+        }
+
+        p {
+            margin-top: 20px;
+        }
+
+        .back-links {
+            margin-top: 20px;
+            text-align: center;
+        }
+    </style>
 </head>
 <body>
-
+<div class="container">
+    <h2>Szczegóły kierowcy</h2>
+    <table>
+        <tr>
+            <th>ID</th>
+            <th>Imię</th>
+            <th>Nazwisko</th>
+            <th>Data badania psychotechnicznego</th>
+            <th>Data badania lekarskiego</th>
+            <th>Data wydania prawa jazdy</th>
+        </tr>
+        <tr>
+            <td th:text="${truckDriver.driverId}"></td>
+            <td th:text="${truckDriver.firstName}"></td>
+            <td th:text="${truckDriver.lastName}"></td>
+            <td th:text="${#dates.format(truckDriver.psychoTestDate, 'yyyy-MM-dd')}"></td>
+            <td th:text="${#dates.format(truckDriver.medTestDate, 'yyyy-MM-dd')}"></td>
+            <td th:text="${#dates.format(truckDriver.driverLicenseDate, 'yyyy-MM-dd')}"></td>
+        </tr>
+    </table>
+    <p class="back-links">
+        <a href="/truckdriver/list">Wróć do listy kierowców</a>
+        <a href="/truckdriver/add">Dodaj nowego kierowcę</a>
+    </p>
+</div>
 </body>
 </html>

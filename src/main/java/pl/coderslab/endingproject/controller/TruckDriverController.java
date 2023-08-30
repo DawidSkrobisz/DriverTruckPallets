@@ -57,11 +57,18 @@ public class TruckDriverController {
         return "truckdriver/list";
     }
 
-    @GetMapping("/get")
-    @ResponseBody
-    public TruckDriver getTruckDriver() {
-        return truckDriverDao.getTruckDriver(3L);
+    @GetMapping("/get/{driverId}")
+    public String driverDetails(@PathVariable Long driverId, Model model) {
+        TruckDriver truckDriver = truckDriverDao.getTruckDriver(driverId);
+
+        if (truckDriver != null) {
+            model.addAttribute("truckDriver", truckDriver);
+            return "truckdriver/get";
+        } else {
+            return "error";
+        }
     }
+
 
     @ResponseBody
     @GetMapping("/update")
