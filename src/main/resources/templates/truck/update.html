@@ -1,33 +1,41 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Update Truck</title>
+    <title>Aktualizuj ciężarówkę</title>
+    <style>
+        /* ... (Twoje style CSS) ... */
+    </style>
 </head>
 <body>
-<h1>Update Truck</h1>
-<form action="@{/truck/update}" th:object="${truck}" method="post">
-    <input type="hidden" th:field="*{truck.truckId}">
+<div class="container">
+    <h2>Aktualizuj ciężarówkę</h2>
+    <form action="/truck/update/${truck.truckId}" method="post" th:object="${updatedTruck}">
+        <input type="hidden" th:field="*{truck.truckId}" />
 
-    <label for="truckModel">Truck Model:</label><br>
-    <input type="text" id="truckModel" name="truckModel" th:field="*{truck.truckModel}"><br>
+        <label for="truckModel">Model ciężarówki:</label>
+        <input type="text" id="truckModel" th:field="*{truck.truckModel}" required>
 
-    <label for="truckPlates">Truck Plates:</label><br>
-    <input type="text" id="truckPlates" name="truckPlates" th:field="*{truck.truckPlates}"><br>
+        <label for="truckPlates">Numery rejestracyjne:</label>
+        <input type="text" id="truckPlates" th:field="*{truck.truckPlates}" required>
 
-    <label for="vinNumber">VIN Number:</label><br>
-    <input type="text" id="vinNumber" name="vinNumber" th:field="*{truck.vinNumber}"><br>
+        <label for="vinNumber">Numer VIN:</label>
+        <input type="text" id="vinNumber" th:field="*{truck.vinNumber}" required>
 
-    <label for="serviceDateStr">Service Date:</label><br>
-    <input type="text" id="serviceDateStr" name="serviceDateStr" th:field="*{truck.serviceDateStr}"><br>
+        <label for="serviceDate">Data następnego przeglądu:</label>
+        <input type="date" id="serviceDate" th:field="*{truck.serviceDate}" required>
 
-    <label for="insuranceDateStr">Insurance Date:</label><br>
-    <input type="text" id="insuranceDateStr" name="insuranceDateStr" th:field="*{truck.insuranceDateStr}"><br>
+        <label for="insuranceDate">Data końca ubezpieczenia:</label>
+        <input type="date" id="insuranceDate" th:field="*{truck.insuranceDate}" required>
 
-    <label for="acctualSaldoPallets">Actual Saldo Pallets:</label><br>
-    <input type="number" id="acctualSaldoPallets" name="acctualSaldoPallets" th:field="*{truck.acctualSaldoPallets}"><br>
+        <label for="acctualSaldoPallets">Aktualne saldo palet:</label>
+        <input type="number" id="acctualSaldoPallets" th:field="*{truck.actualSaldoPallets}" required>
 
-    <button type="submit">Update Truck</button>
-</form>
+        <input type="submit" value="Aktualizuj ciężarówkę">
+    </form>
+    <p class="back-link">
+        <a href="/truck/list">Wróć do listy pojazdów</a>
+    </p>
+</div>
 </body>
 </html>
