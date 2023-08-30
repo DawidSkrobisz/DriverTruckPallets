@@ -74,10 +74,10 @@
             <th>Akcje</th>
         </tr>
         <tr th:each="truck : ${trucks}">
-            <td th:text="${truck.truckModel}"></td>
+            <td><a th:href="@{|/truck/details/${truck.truckId}|}" th:text="${truck.truckModel}"></a></td>
             <td th:text="${truck.truckPlates}"></td>
             <td class="action-links">
-                <a th:href="@{|/truck/details/${truck.truckId}|}">Szczegóły</a>
+                <a th:href="@{|/truck/update/${truck.truckId}|}">Edytuj</a>
                 <a th:href="@{|/truck/delete?id=${truck.truckId}|}" class="delete-link">Usuń</a>
             </td>
         </tr>

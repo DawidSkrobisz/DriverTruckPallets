@@ -68,17 +68,15 @@
     <h2>Lista firm</h2>
     <table>
         <tr>
-            <th>ID</th>
             <th>Nazwa</th>
             <th>NIP</th>
             <th>Akcje</th>
         </tr>
         <tr th:each="company : ${companys}">
-            <td><a th:href="@{/company/get/{id}(id=${company.companyId})}" th:text="${company.companyId}"></a></td>
-            <td th:text="${company.companyName}"></td>
+            <td><a th:href="@{|/company/get/${company.companyId}|}" th:text="${company.companyName}"></a></td>
             <td th:text="${company.companyVat}"></td>
             <td class="action-links">
-                <a th:href="@{|/company/edit/${company.companyId}|}">Edytuj</a>
+                <a th:href="@{|/company/update/${company.companyId}|}">Edytuj</a>
                 <a th:href="@{|/company/delete?id=${company.companyId}|}" class="delete-link">Usuń</a>
             </td>
         </tr>
