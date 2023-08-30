@@ -71,27 +71,20 @@ public class TruckController {
         return "truck/truck-list";
     }
 
-    @ResponseBody
+
     @PostMapping("/update")
-    public String updateTruck(@ModelAttribute Truck updatedTruck) {
-        Truck truck = truckDao.findByIdTruck(updatedTruck.getTruckId());
-
+    public String updateTruck(
+            @RequestParam Long truckId,
+            @RequestParam String newTruckModel) {
+        Truck truck = truckDao.findByIdTruck(truckId);
         if (truck != null) {
-            truck.setTruckModel(updatedTruck.getTruckModel());
-            truck.setTruckPlates(updatedTruck.getTruckPlates());
-            truck.setVinNumber(updatedTruck.getVinNumber());
-            truck.setServiceDate(updatedTruck.getServiceDate());
-            truck.setInsuranceDate(updatedTruck.getInsuranceDate());
-            truck.setAcctualSaldoPallets(updatedTruck.getAcctualSaldoPallets());
-
+            truck.setTruckModel(newTruckModel);
             truckDao.updateTruck(truck);
-
-            return "Zaktualizowano ciężarówkę o ID " + truck.getTruckId();
+            return "Zaktualizowano ciężarówkę o ID " + truckId;
         } else {
-            return "Ciężarówka o podanym ID nie istnieje";
+            return "Ciężarówka o ID nie istnieje";
         }
     }
-
 
     @GetMapping("/delete")
     public String deleteTruck(@RequestParam Long id) {

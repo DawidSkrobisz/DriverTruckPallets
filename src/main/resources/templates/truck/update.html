@@ -4,13 +4,13 @@
     <meta charset="UTF-8">
     <title>Aktualizuj ciężarówkę</title>
     <style>
-        /* ... (Twoje style CSS) ... */
+
     </style>
 </head>
 <body>
 <div class="container">
     <h2>Aktualizuj ciężarówkę</h2>
-    <form action="/truck/update/${truck.truckId}" method="post" th:object="${updatedTruck}">
+    <form action="/truck/update" method="post" th:object="${updatedTruck}">
         <input type="hidden" th:field="*{truck.truckId}" />
 
         <label for="truckModel">Model ciężarówki:</label>
