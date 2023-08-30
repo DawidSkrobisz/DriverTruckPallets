@@ -29,7 +29,7 @@ public class TruckController {
     }
 
     @RequestMapping("/add")
-    @ResponseBody
+
     public String addTruck(
             @RequestParam String truckModel,
             @RequestParam String truckPlates,
@@ -49,7 +49,7 @@ public class TruckController {
         truck.setInsuranceDate(insuranceDate);
         truck.setAcctualSaldoPallets(acctualSaldoPallets);
         truckDao.saveTruck(truck);
-        return "Dodano ciężarówkę do bazy danych";
+        return "redirect:/truck/list";
     }
 
     @GetMapping("/details/{truckId}")
@@ -85,6 +85,7 @@ public class TruckController {
             return "Ciężarówka o ID nie istnieje";
         }
     }
+
 
     @GetMapping("/delete")
     public String deleteTruck(@RequestParam Long id) {

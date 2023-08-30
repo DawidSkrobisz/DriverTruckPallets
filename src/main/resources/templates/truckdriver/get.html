@@ -59,12 +59,12 @@
     <h2>Szczegóły kierowcy</h2>
     <table>
         <tr>
-            <th>ID</th>
+            <th>ID </th>
             <th>Imię</th>
             <th>Nazwisko</th>
-            <th>Data badania psychotechnicznego</th>
-            <th>Data badania lekarskiego</th>
-            <th>Data wydania prawa jazdy</th>
+            <th>Następne badanie psychotechniczne</th>
+            <th>Następne badanie lekarskie</th>
+            <th>Data ważności prawa jazdy</th>
         </tr>
         <tr>
             <td th:text="${truckDriver.driverId}"></td>
@@ -77,7 +77,7 @@
     </table>
     <p class="back-links">
         <a href="/truckdriver/list">Wróć do listy kierowców</a>
-        <a href="/truckdriver/add">Dodaj nowego kierowcę</a>
+        <a href="/truckdriver/update">Edytuj kierowcę</a>
     </p>
 </div>
 </body>

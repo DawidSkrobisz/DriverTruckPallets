@@ -68,14 +68,14 @@
             <td th:text="${truck.truckModel}"></td>
             <td th:text="${truck.truckPlates}"></td>
             <td th:text="${truck.vinNumber}"></td>
-            <td th:text="${truck.serviceDate}"></td>
-            <td th:text="${truck.insuranceDate}"></td>
+            <td th:text="${#dates.format(truck.serviceDate, 'yyyy-MM-dd')}"></td>
+            <td th:text="${#dates.format(truck.insuranceDate, 'yyyy-MM-dd')}"></td>
             <td th:text="${truck.acctualSaldoPallets}"></td>
         </tr>
     </table>
     <p class="back-links">
         <a href="/truck/list">Wróć do listy pojazdów</a>
-        <a href="/truck/update">Edytuj ciężarówkę</a>
+        <a th:href="@{/truck/update(id=${truck.truckId})}">Edytuj ciężarówkę</a>
     </p>
 </div>
 </body>

@@ -59,7 +59,7 @@ public class CompanyController {
     }
 
     @ResponseBody
-    @GetMapping("/update")
+    @PostMapping("/update")
     public Company updateCompany() {
         Company company = companyDao.findByIdCompany(1L);
         company.setCompanyName("Oskroba");

@@ -10,29 +10,16 @@
 <body>
 <div class="container">
     <h2>Aktualizuj ciężarówkę</h2>
-    <form action="/truck/update" method="post" th:object="${updatedTruck}">
-        <input type="hidden" th:field="*{truck.truckId}" />
+    <form action="/truck/update" method="post">
+        <label for="truckId">ID ciężarówki:</label>
+        <input type="text" id="truckId" name="truckId" required>
 
-        <label for="truckModel">Model ciężarówki:</label>
-        <input type="text" id="truckModel" th:field="*{truck.truckModel}" required>
-
-        <label for="truckPlates">Numery rejestracyjne:</label>
-        <input type="text" id="truckPlates" th:field="*{truck.truckPlates}" required>
-
-        <label for="vinNumber">Numer VIN:</label>
-        <input type="text" id="vinNumber" th:field="*{truck.vinNumber}" required>
-
-        <label for="serviceDate">Data następnego przeglądu:</label>
-        <input type="date" id="serviceDate" th:field="*{truck.serviceDate}" required>
-
-        <label for="insuranceDate">Data końca ubezpieczenia:</label>
-        <input type="date" id="insuranceDate" th:field="*{truck.insuranceDate}" required>
-
-        <label for="acctualSaldoPallets">Aktualne saldo palet:</label>
-        <input type="number" id="acctualSaldoPallets" th:field="*{truck.actualSaldoPallets}" required>
+        <label for="newTruckModel">Nowy model ciężarówki:</label>
+        <input type="text" id="newTruckModel" name="newTruckModel" required>
 
         <input type="submit" value="Aktualizuj ciężarówkę">
     </form>
+
     <p class="back-link">
         <a href="/truck/list">Wróć do listy pojazdów</a>
     </p>
