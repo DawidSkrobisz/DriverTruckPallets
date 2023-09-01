@@ -45,7 +45,7 @@ public class LoadingController {
         loading.setLoadingNumber(loadingNumber);
         loadingDao.saveLoading(loading);
 
-        return "redirect:/loading/list";
+        return "redirect:/palette/list";
     }
 
 
