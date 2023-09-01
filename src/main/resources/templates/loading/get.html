@@ -3,23 +3,87 @@
 <head>
     <meta charset="UTF-8">
     <title>Szczegóły załadunku</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #afa0a0;
+        }
+
+        .container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            flex-direction: column; /* Dodane, aby elementy były ustawione w pionie */
+        }
+
+        h1 {
+            font-size: 28px;
+            margin-bottom: 20px;
+        }
+
+        form {
+            width: 80%;
+            max-width: 600px;
+            background-color: white;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+        }
+
+        label {
+            display: block;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+
+        input[type="text"],
+        input[type="date"],
+        input[type="number"] {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        input[type="submit"] {
+            background-color: #27e7cd;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #1aa794;
+        }
+
+        .back-link {
+            margin-top: 20px;
+            text-align: center;
+        }
+    </style>
 </head>
 <body>
-<h1>Szczegóły załadunku</h1>
+<div class="container">
+    <h1>Szczegóły załadunku</h1>
+    <div>
+        <h2>Informacje szczegółowe</h2>
+        <p><strong>ID:</strong> <span th:text="${loading.paletteId}"></span></p>
+        <p><strong>Nazwa firmy:</strong> <span th:text="${loading.company.companyName}"></span></p>
+        <p><strong>Ilość załadowanych palet:</strong> <span th:text="${loading.loadedPallets}"></span></p>
+        <p><strong>Ilość palet wymienionych:</strong> <span th:text="${loading.exchangedPallets}"></span></p>
+        <p><strong>Zwrócone palety:</strong> <span th:text="${loading.returnedPallets}"></span></p>
+        <p><strong>Data załadunku:</strong> <span th:text="${loading.loadingDate}"></span></p>
+        <p><strong>Numer referencyjny:</strong> <span th:text="${loading.loadingNumber}"></span></p>
+        <p><strong>Status:</strong> <span th:text="${loading.status}"></span></p>
+        <p><strong>Saldo palet z załadunku:</strong> <span th:text="${loading.saldoPallets()}"></span></p>
+    </div>
 
-<div>
-    <h2>Informacje szczegółowe</h2>
-    <p><strong>ID:</strong> <span th:text="${loading.paletteId}"></span></p>
-    <p><strong>Nazwa firmy:</strong> <span th:text="${loading.company.companyName}"></span></p>
-    <p><strong>Ilość załadowanych palet:</strong> <span th:text="${loading.loadedPallets}"></span></p>
-    <p><strong>Ilość palet wymienionych:</strong> <span th:text="${loading.exchangedPallets}"></span></p>
-    <p><strong>Zwrócone palety:</strong> <span th:text="${loading.returnedPallets}"></span></p>
-    <p><strong>Data załadunku:</strong> <span th:text="${loading.loadingDate}"></span></p>
-    <p><strong>Numer referencyjny:</strong> <span th:text="${loading.loadingNumber}"></span></p>
-    <p><strong>Status:</strong> <span th:text="${loading.status}"></span></p>
-    <p><strong>Saldo palet z załadunku:</strong> <span th:text="${loading.saldoPallets()}"></span></p>
+    <a th:href="@{/loadings}" class="btn btn-primary">Wróć do listy załadunków</a>
 </div>
-
-<a th:href="@{/loadings}" class="btn btn-primary">Wróć do listy załadunków</a>
 </body>
 </html>

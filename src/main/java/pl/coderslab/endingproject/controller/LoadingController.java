@@ -49,13 +49,13 @@ public class LoadingController {
     }
 
 
-    @GetMapping("/get/{loadingId}")
+    @GetMapping("/get/{companyId}")
     public String loadingsDetails(@PathVariable Long companyId, Model model) {
         Loading loading = loadingDao.findByIdLoading(companyId);
         if (loading != null) {
             Long companyName = loading.getCompany().getCompanyId();
             model.addAttribute("loading", loading);
-
+            model.addAttribute("companyName", companyName);
             return "loading/get";
         } else {
             return "error";
