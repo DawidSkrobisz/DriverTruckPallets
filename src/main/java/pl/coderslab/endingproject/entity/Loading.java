@@ -50,7 +50,7 @@ public class Loading {
 
     @Column(name = "saldoFromLoading")
     public Integer saldoPallets() {
-        return loadedPallets - returnedPallets;
+        return exchangedPallets - returnedPallets;
     }
 
     public static enum Status {

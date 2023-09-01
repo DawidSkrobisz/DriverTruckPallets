@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Loading Details</title>
+</head>
+<body>
+<h1>Loading Details</h1>
+
+<div>
+    <h2>Loading Information</h2>
+    <p><strong>ID:</strong> <span th:text="${loading.paletteId}"></span></p>
+    <p><strong>Company Name:</strong> <span th:text="${loading.company.companyName}"></span></p>
+    <p><strong>Loaded Pallets:</strong> <span th:text="${loading.loadedPallets}"></span></p>
+    <p><strong>Exchanged Pallets:</strong> <span th:text="${loading.exchangedPallets}"></span></p>
+    <p><strong>Returned Pallets:</strong> <span th:text="${loading.returnedPallets}"></span></p>
+    <p><strong>Loading Date:</strong> <span th:text="${loading.loadingDate}"></span></p>
+    <p><strong>Loading Number:</strong> <span th:text="${loading.loadingNumber}"></span></p>
+    <p><strong>Status:</strong> <span th:text="${loading.status}"></span></p>
+    <p><strong>Saldo Pallets:</strong> <span th:text="${loading.saldoPallets()}"></span></p>
+</div>
+
+<a th:href="@{/loadings}" class="btn btn-primary">Back to Loadings List</a>
+</body>
+</html>
