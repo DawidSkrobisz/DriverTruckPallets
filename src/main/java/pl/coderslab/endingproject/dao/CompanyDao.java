@@ -36,4 +36,6 @@ public class CompanyDao {
         TypedQuery<Company> query = entityManager.createQuery("SELECT t FROM Company t", Company.class);
         return query.getResultList();
     }
+
+
 }

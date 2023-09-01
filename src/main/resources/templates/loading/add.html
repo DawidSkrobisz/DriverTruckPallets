@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Add Loading</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #afa0a0;
+        }
+
+        .container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            flex-direction: column; /* Dodane, aby elementy były ustawione w pionie */
+        }
+
+        h1 {
+            font-size: 28px;
+            margin-bottom: 20px;
+        }
+
+        form {
+            width: 80%;
+            max-width: 600px;
+            background-color: white;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+        }
+
+        label {
+            display: block;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+
+        input[type="text"],
+        input[type="date"],
+        input[type="number"] {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        input[type="submit"] {
+            background-color: #27e7cd;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #1aa794;
+        }
+
+        .back-link {
+            margin-top: 20px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+<h1>Add Loading</h1>
+<div class="container">
+<form action="/palette/add" method="post" th:object="${loading}">
+    <label for="companyName">Company Name:</label>
+    <input type="text" id="companyName" name="companyName" required><br>
+
+    <label for="loadedPallets">Loaded Pallets:</label>
+    <input type="number" id="loadedPallets" name="loadedPallets" required><br>
+
+    <label for="exchangedPallets">Exchanged Pallets:</label>
+    <input type="number" id="exchangedPallets" name="exchangedPallets" required><br>
+
+    <label for="returnedPallets">Returned Pallets:</label>
+    <input type="number" id="returnedPallets" name="returnedPallets" required><br>
+
+    <label for="loadingDate">Loading Date:</label>
+    <input type="date" id="loadingDate" name="loadingDate" required><br>
+
+    <label for="loadingNumber">Loading Number:</label>
+    <input type="text" id="loadingNumber" name="loadingNumber" required><br>
+
+    <label for="status">Status:</label>
+    <select id="status" name="status" required>
+        <option value="NEW">NEW</option>
+        <option value="COMPLETED">COMPLETED</option>
+        <option value="ARCHIVED">ARCHIVED</option>
+    </select><br>
+
+    <button type="submit">Add Loading</button>
+</form>
+
+<a href="/palette/list">Back to Loadings List</a>
+<a href="/index.html">Wróć na stronę główną</a>
+</div>
+</body>
+</html>

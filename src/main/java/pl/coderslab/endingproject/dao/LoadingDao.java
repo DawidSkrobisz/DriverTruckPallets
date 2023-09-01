@@ -5,6 +5,7 @@ import jakarta.persistence.PersistenceContext;
 import jakarta.persistence.TypedQuery;
 import jakarta.transaction.Transactional;
 import org.springframework.stereotype.Repository;
+import pl.coderslab.endingproject.entity.Company;
 import pl.coderslab.endingproject.entity.Loading;
 
 import java.util.List;
@@ -29,6 +30,11 @@ public class LoadingDao {
 
     public void deleteLoading(Loading loading) {
         entityManager.remove(entityManager.contains(loading) ? loading: entityManager.merge(loading));
+    }
+
+    public List<Company> getAllCompanies() {
+        TypedQuery<Company> query = entityManager.createQuery("SELECT c FROM Company c", Company.class);
+        return query.getResultList();
     }
 
     public List<Loading> getAllLoadings() {
