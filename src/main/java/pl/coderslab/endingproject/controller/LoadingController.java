@@ -6,8 +6,10 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import pl.coderslab.endingproject.dao.CompanyDao;
 import pl.coderslab.endingproject.dao.LoadingDao;
+import pl.coderslab.endingproject.dao.TruckDao;
 import pl.coderslab.endingproject.entity.Company;
 import pl.coderslab.endingproject.entity.Loading;
+import pl.coderslab.endingproject.entity.Truck;
 
 import java.time.LocalDate;
 import java.util.List;
@@ -18,45 +20,33 @@ public class LoadingController {
 
     private LoadingDao loadingDao;
     private CompanyDao companyDao;
+    private TruckDao truckDao;
 
-    public LoadingController(LoadingDao loadingDao, CompanyDao companyDao) {
+    public LoadingController(LoadingDao loadingDao, CompanyDao companyDao, TruckDao truckDao) {
         this.loadingDao = loadingDao;
         this.companyDao = companyDao;
+        this.truckDao = truckDao;
     }
-
 
     @GetMapping("/add")
     public String formAdd(Model model) {
         Loading loading = new Loading();
         model.addAttribute("loading", loading);
 
-        List<Company> companies = companyDao.getAllCompanys(); // Pobierz listę firm z bazy danych
-        model.addAttribute("companies", companies); // Przekaż listę firm do widoku
+        List<Company> companies = companyDao.getAllCompanys();
+        model.addAttribute("companies", companies);
+
+        List<Truck> trucks = truckDao.getAllTrucks();
+        model.addAttribute("trucks", trucks);
 
         return "loading/add";
     }
 
     @PostMapping("/add")
-    public String addLoading(
-            @RequestParam String companyName,
-            @RequestParam Integer loadedPallets,
-            @RequestParam Integer exchangedPallets,
-            @RequestParam Integer returnedPallets,
-            @RequestParam @DateTimeFormat(pattern = "yyyy-MM-dd") LocalDate loadingDate,
-            @RequestParam String loadingNumber) {
-
-        Loading loading = new Loading();
-        loading.setCompanyName(companyName);
-        loading.setLoadedPallets(loadedPallets);
-        loading.setExchangedPallets(exchangedPallets);
-        loading.setReturnedPallets(returnedPallets);
-        loading.setLoadingDate(loadingDate);
-        loading.setLoadingNumber(loadingNumber);
+    public String addLoading(@ModelAttribute("loading") Loading loading) {
         loadingDao.saveLoading(loading);
-
         return "redirect:/palette/list";
     }
-
 
     @GetMapping("/get/{companyId}")
     public String loadingsDetails(@PathVariable Long companyId, Model model) {
@@ -77,5 +67,7 @@ public class LoadingController {
         model.addAttribute("loadings", loadings);
         return "loading/list";
     }
+
+
 
 }

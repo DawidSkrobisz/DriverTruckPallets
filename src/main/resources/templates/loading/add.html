@@ -61,6 +61,14 @@
             background-color: #1aa794;
         }
 
+        #companyName {
+            width: 100%;
+        }
+
+        #truckPlates {
+            width: 100%;
+        }
+
         .back-link {
             margin-top: 20px;
             text-align: center;
@@ -74,6 +82,11 @@
     <label for="companyName">Nazwa firmy:</label>
     <select id="companyName" name="companyName" required>
         <option th:each="company : ${companies}" th:value="${company.companyName}" th:text="${company.companyName}"></option>
+    </select><br>
+
+    <label for="truckPlates">Numery rejestracyjne:</label>
+    <select id="truckPlates" name="truckPlates" required>
+        <option th:each="truck : ${trucks}" th:value="${truck.truckPlates}" th:text="${truck.truckPlates}"></option>
     </select><br>
 
     <label for="loadedPallets">Ilość palet załadowanych:</label>

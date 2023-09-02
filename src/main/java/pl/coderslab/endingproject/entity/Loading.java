@@ -23,6 +23,9 @@ public class Loading {
     public String companyName;
 
     @NotNull
+    public String truckPlates;
+
+    @NotNull
     public Integer loadedPallets;
 
     @NotNull
