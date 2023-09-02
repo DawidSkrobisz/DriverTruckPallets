@@ -53,6 +53,7 @@ public class Loading {
         return exchangedPallets - returnedPallets;
     }
 
+    @NotNull
     public static enum Status {
         NEW, COMPLETED, ARCHIVED;
     }

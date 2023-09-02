@@ -4,7 +4,9 @@ import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import pl.coderslab.endingproject.dao.CompanyDao;
 import pl.coderslab.endingproject.dao.LoadingDao;
+import pl.coderslab.endingproject.entity.Company;
 import pl.coderslab.endingproject.entity.Loading;
 
 import java.time.LocalDate;
@@ -15,15 +17,22 @@ import java.util.List;
 public class LoadingController {
 
     private LoadingDao loadingDao;
+    private CompanyDao companyDao;
 
-    public LoadingController(LoadingDao loadingDao) {
+    public LoadingController(LoadingDao loadingDao, CompanyDao companyDao) {
         this.loadingDao = loadingDao;
+        this.companyDao = companyDao;
     }
+
 
     @GetMapping("/add")
     public String formAdd(Model model) {
         Loading loading = new Loading();
         model.addAttribute("loading", loading);
+
+        List<Company> companies = companyDao.getAllCompanys(); // Pobierz listę firm z bazy danych
+        model.addAttribute("companies", companies); // Przekaż listę firm do widoku
+
         return "loading/add";
     }
 
