@@ -1,8 +1,8 @@
--- MySQL dump 10.13  Distrib 8.0.33, for Win64 (x86_64)
+-- MySQL dump 10.13  Distrib 8.0.32, for Linux (x86_64)
 --
 -- Host: localhost    Database: dritrucpal
 -- ------------------------------------------------------
--- Server version	8.0.33
+-- Server version	8.0.34-0ubuntu0.22.04.1
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -32,12 +32,14 @@ CREATE TABLE `palette` (
   `company_id` int DEFAULT NULL,
   `truck_id` int DEFAULT NULL,
   `status` varchar(255) DEFAULT NULL,
+  `company_name` varchar(255) DEFAULT NULL,
+  `truck_plates` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`palette_id`),
   KEY `fk_company` (`company_id`),
   KEY `fk_truck` (`truck_id`),
   CONSTRAINT `fk_company` FOREIGN KEY (`company_id`) REFERENCES `company` (`company_id`),
   CONSTRAINT `fk_truck` FOREIGN KEY (`truck_id`) REFERENCES `truck` (`truck_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=18 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -46,6 +48,7 @@ CREATE TABLE `palette` (
 
 LOCK TABLES `palette` WRITE;
 /*!40000 ALTER TABLE `palette` DISABLE KEYS */;
+INSERT INTO `palette` VALUES (14,33,32,43,'2023-09-22','2',NULL,NULL,'NEW','Oskroba','Volvo FH12'),(15,25,25,20,'2023-09-21','0',NULL,NULL,'NEW','Pago','WND83762'),(16,25,25,26,'2023-10-07','1',NULL,NULL,'NEW','Hopi','WGR667W'),(17,28,28,0,'2023-09-22','1234',NULL,NULL,'NEW','HZ Transport','WND83762');
 /*!40000 ALTER TABLE `palette` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -58,4 +61,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2023-08-27 21:42:30
+-- Dump completed on 2023-09-03  7:35:44

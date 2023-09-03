@@ -1,3 +1,8 @@
+-- MySQL dump 10.13  Distrib 8.0.32, for Linux (x86_64)
+--
+-- Host: localhost    Database: dritrucpal
+-- ------------------------------------------------------
+-- Server version	8.0.34-0ubuntu0.22.04.1
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -23,7 +28,7 @@ CREATE TABLE `company` (
   `company_adress` varchar(255) DEFAULT NULL,
   `company_vat` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`company_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -32,7 +37,7 @@ CREATE TABLE `company` (
 
 LOCK TABLES `company` WRITE;
 /*!40000 ALTER TABLE `company` DISABLE KEYS */;
-INSERT INTO `company` VALUES (2,'Intereuropol','Marki','151-151-26-26'),(3,'Intereuropol','Marki','151-151-26-26'),(4,'Intereuropol','Marki','151-151-26-26'),(5,'Intereuropol','Marki','151-151-26-26'),(6,'Intereuropol','Marki','151-151-26-26');
+INSERT INTO `company` VALUES (7,'Intereuropol','Marki, Warszawa','28273928'),(8,'Unimięs','Chrzanów','43843141'),(9,'Oskroba','Kołbiel','4384314134'),(10,'Hopi','Mszczonów','4343141343'),(11,'Pago','Ul. Powstańców Śląski 15, 28-500 Ruda Śląska','473984029'),(12,'HZ Transport','Wrocław, Al. Niepodległości 15','879425275');
 /*!40000 ALTER TABLE `company` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -45,4 +50,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2023-08-27 21:42:30
+-- Dump completed on 2023-09-03  7:35:44

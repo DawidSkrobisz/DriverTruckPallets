@@ -1,6 +1,5 @@
 package pl.coderslab.endingproject.controller;
 
-import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -11,7 +10,6 @@ import pl.coderslab.endingproject.entity.Company;
 import pl.coderslab.endingproject.entity.Loading;
 import pl.coderslab.endingproject.entity.Truck;
 
-import java.time.LocalDate;
 import java.util.List;
 
 @Controller
@@ -67,7 +65,5 @@ public class LoadingController {
         model.addAttribute("loadings", loadings);
         return "loading/list";
     }
-
-
 
 }
