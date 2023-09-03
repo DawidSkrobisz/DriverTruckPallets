@@ -26,17 +26,11 @@ public class CompanyController {
     }
 
     @RequestMapping("/add")
-    public String addCompany(
-            @RequestParam String companyName,
-            @RequestParam String companyAdress,
-            @RequestParam String companyVat) {
-        Company company = new Company();
-        company.setCompanyName(companyName);
-        company.setCompanyAdress(companyAdress);
-        company.setCompanyVat(companyVat);
+    public String addCompany(@ModelAttribute Company company) {
         companyDao.saveCompany(company);
         return "redirect:/company/list";
     }
+
 
 
     @GetMapping("/list")

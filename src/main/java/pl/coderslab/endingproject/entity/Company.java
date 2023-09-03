@@ -32,6 +32,10 @@ public class Company {
     @Column(name="companyVat")
     public String companyVat;
 
+    @NotNull
+    @Column(name = "saldoPalletFromCompany")
+    public Integer saldoPalletFromCompany;
+
     @OneToMany(mappedBy = "company")
     private List<Loading> loadings = new ArrayList<>();
 
