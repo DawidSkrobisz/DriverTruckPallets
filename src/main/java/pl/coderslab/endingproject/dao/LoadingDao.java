@@ -3,6 +3,7 @@ package pl.coderslab.endingproject.dao;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
 import jakarta.persistence.TypedQuery;
+import jakarta.persistence.criteria.CriteriaBuilder;
 import jakarta.transaction.Transactional;
 import org.springframework.stereotype.Repository;
 import pl.coderslab.endingproject.entity.Company;
@@ -41,4 +42,6 @@ public class LoadingDao {
         TypedQuery<Loading> query = entityManager.createQuery("SELECT l FROM Loading l", Loading.class);
         return query.getResultList();
     }
+    
+
 }
