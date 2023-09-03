@@ -3,6 +3,7 @@ package pl.coderslab.endingproject.entity;
 import jakarta.persistence.*;
 import lombok.*;
 import org.jetbrains.annotations.NotNull;
+import org.hibernate.validator.constraints.pl.PESEL;
 
 import java.time.Instant;
 
@@ -38,5 +39,9 @@ public class TruckDriver {
     @NotNull
     @Column(name = "driverLicenseDate")
     public Instant driverLicenseDate;
+
+    @PESEL
+    @Column(name = "pesel")
+    public Long pesel;
 
 }

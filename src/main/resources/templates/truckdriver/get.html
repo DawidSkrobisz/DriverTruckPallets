@@ -62,6 +62,7 @@
             <th>ID </th>
             <th>Imię</th>
             <th>Nazwisko</th>
+            <th>PESEL</th>
             <th>Następne badanie psychotechniczne</th>
             <th>Następne badanie lekarskie</th>
             <th>Data ważności prawa jazdy</th>
@@ -70,6 +71,7 @@
             <td th:text="${truckDriver.driverId}"></td>
             <td th:text="${truckDriver.firstName}"></td>
             <td th:text="${truckDriver.lastName}"></td>
+            <td th:text="${truckDriver.pesel}"></td>
             <td th:text="${#dates.format(truckDriver.psychoTestDate, 'yyyy-MM-dd')}"></td>
             <td th:text="${#dates.format(truckDriver.medTestDate, 'yyyy-MM-dd')}"></td>
             <td th:text="${#dates.format(truckDriver.driverLicenseDate, 'yyyy-MM-dd')}"></td>
