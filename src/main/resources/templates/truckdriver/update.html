@@ -2,7 +2,7 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Dodaj kierowcę</title>
+    <title>Aktualizuj kierowcę</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -69,28 +69,30 @@
 </head>
 <body>
 <div class="container">
-    <h2>Dodaj nowego kierowcę</h2>
-    <form action="/truckdriver/add" method="post" th:object="${truckDriver}">
+    <h2>Aktualizuj dane kierowcy</h2>
+    <form action="/truckdriver/update" method="post" th:object="${truckDriver}">
 
         <label for="firstName">Imię:</label>
-        <input type="text" id="firstName" name="firstName" required>
+        <input type="text" id="firstName" th:value="${truckDriver.firstName}" th:name="firstName" required>
 
         <label for="lastName">Nazwisko:</label>
-        <input type="text" id="lastName" name="lastName" required>
+        <input type="text" id="lastName" th:value="${truckDriver.lastName}" th:name="lastName" required>
 
         <label for="pesel">Pesel:</label>
-        <input type="text" id="pesel" name="pesel" required>
+        <input type="number" id="pesel" th:value="${truckDriver.pesel}" th:name="pesel" required>
 
         <label for="psychoTestDate">Następne badanie psychotechniczne:</label>
-        <input type="date" id="psychoTestDate" name="psychoTestDate" required>
+        <input type="date" id="psychoTestDate" th:value="${truckDriver.psychoTestDate}" th:name="psychoTestDate"
+               required>
 
         <label for="medTestDate">Następne badanie lekarskie:</label>
-        <input type="date" id="medTestDate" name="medTestDate" required>
+        <input type="date" id="medTestDate" th:value="${truckDriver.medTestDate}" th:name="medTestDate" required>
 
         <label for="driverLicenseDate">Data ważności prawa jazdy:</label>
-        <input type="date" id="driverLicenseDate" name="driverLicenseDate" required>
+        <input type="date" id="driverLicenseDate" th:value="${truckDriver.driverLicenseDate}"
+               th:name="driverLicenseDate" required>
 
-        <input type="submit" value="Dodaj kierowcę">
+        <input type="submit" value="Aktualizuj kierowcę">
     </form>
     <p class="back-link">
         <a href="/truckdriver/list">Wróć do listy kierowców</a>

@@ -4,6 +4,7 @@ import jakarta.persistence.*;
 import lombok.*;
 import org.jetbrains.annotations.NotNull;
 import org.hibernate.validator.constraints.pl.PESEL;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import java.time.Instant;
 
@@ -30,14 +31,17 @@ public class TruckDriver {
 
     @NotNull
     @Column(name = "psychoTestDate")
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     public Instant psychoTestDate;
 
     @NotNull
     @Column(name = "medTestDate")
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     public Instant medTestDate;
 
     @NotNull
     @Column(name = "driverLicenseDate")
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     public Instant driverLicenseDate;
 
     @PESEL

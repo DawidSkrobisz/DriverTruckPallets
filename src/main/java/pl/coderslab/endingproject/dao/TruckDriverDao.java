@@ -24,7 +24,6 @@ public class TruckDriverDao {
         entityManager.merge(truckDriver);
     }
 
-
     public TruckDriver getTruckDriver(long id) {
         return entityManager.find(TruckDriver.class, id);
     }

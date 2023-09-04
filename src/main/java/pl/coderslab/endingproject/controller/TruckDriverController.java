@@ -69,15 +69,24 @@ public class TruckDriverController {
         }
     }
 
+    @GetMapping("/update/{driverId}")
+    public String showUpdateTruckDriverForm(@PathVariable Long driverId, Model model) {
+        TruckDriver truckDriver = truckDriverDao.getTruckDriver(driverId);
 
-    @ResponseBody
-    @GetMapping("/update")
-    public TruckDriver updateTruckDriver() {
-        TruckDriver truckDriver = truckDriverDao.getTruckDriver(1L);
-        truckDriver.setFirstName("Michail");
-        truckDriverDao.updateTruckDriver(truckDriver);
-        return truckDriver;
+        if (truckDriver != null) {
+            model.addAttribute("truckDriver", truckDriver);
+            return "truckdriver/update";
+        } else {
+            return "error";
+        }
     }
+
+    @PostMapping("/update")
+    public String updateTruckDriver(@ModelAttribute TruckDriver truckDriver) {
+        truckDriverDao.updateTruckDriver(truckDriver);
+        return "redirect:/truckdriver/list";
+    }
+
 
     @GetMapping("/delete")
     public String deleteTruckDriver(@RequestParam Long id) {
