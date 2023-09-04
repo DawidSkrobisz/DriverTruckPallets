@@ -72,14 +72,13 @@
             <td th:text="${truckDriver.firstName}"></td>
             <td th:text="${truckDriver.lastName}"></td>
             <td th:text="${truckDriver.pesel}"></td>
-            <td th:text="${#dates.format(truckDriver.psychoTestDate, 'yyyy-MM-dd')}"></td>
-            <td th:text="${#dates.format(truckDriver.medTestDate, 'yyyy-MM-dd')}"></td>
-            <td th:text="${#dates.format(truckDriver.driverLicenseDate, 'yyyy-MM-dd')}"></td>
+            <td th:text="${truckDriver.psychoTestDate}"></td>
+            <td th:text="${truckDriver.medTestDate}"></td>
+            <td th:text="${truckDriver.driverLicenseDate}"></td>
         </tr>
     </table>
     <p class="back-links">
         <a href="/truckdriver/list">Wróć do listy kierowców</a>
-        <a href="/truckdriver/update">Edytuj kierowcę</a>
     </p>
 </div>
 </body>
