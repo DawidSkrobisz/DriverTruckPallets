@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Dodaj firmę</title>
+    <title>Aktualizuj firmę</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -39,7 +39,9 @@
             margin-bottom: 5px;
         }
 
-        input[type="text"] {
+        input[type="text"],
+        input[type="date"],
+        input[type="number"] {
             width: 100%;
             padding: 10px;
             margin-bottom: 15px;
@@ -68,26 +70,30 @@
 </head>
 <body>
 <div class="container">
-    <h2>Dodaj nową firmę</h2>
-    <form action="/company/add" method="post" th:object="${company}">
+    <h2>Aktualizuj dane firmy</h2>
+    <form action="/company/update" method="post" th:object="${company}">
+
+        <input type="hidden" id="companyId" name="companyId" th:value="${companyId}"/>
 
         <label for="companyName">Nazwa firmy:</label>
-        <input type="text" id="companyName" name="companyName" required>
+        <input type="text" id="companyName" th:value="${company.companyName}" th:name="companyName" required>
 
         <label for="companyAdress">Adres firmy:</label>
-        <input type="text" id="companyAdress" name="companyAdress" required>
+        <input type="text" id="companyAdress" th:value="${company.companyAdress}" th:name="companyAdress" required>
 
         <label for="companyVat">Numer NIP:</label>
-        <input type="text" id="companyVat" name="companyVat" required>
+        <input type="text" id="companyVat" th:value="${company.companyVat}" th:name="companyVat" required>
 
-        <label for="companyPallets">Saldo palet:</label>
-        <input type="number" id="companyPallets" name="companyPallets" required>
+        <label for="saldoPalletFromCompany">Saldo palet:</label>
+        <input type="number" id="saldoPalletFromCompany" th:value="${company.saldoPalletFromCompany}"
+               th:name="saldoPalletFromCompany"
+               required>
 
-        <input type="submit" value="Aktualizuj firmę">
+        <input type="submit" value="Aktualizuj ciężarówkę">
     </form>
-    <div class="back-link">
-        <a href="/company/list">Wróć do listy firm</a>
-    </div>
+    <p class="back-link">
+        <a href="/company/list">Wróć do listy ciężarówek</a>
+    </p>
 </div>
 </body>
 </html>

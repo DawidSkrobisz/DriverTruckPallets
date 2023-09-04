@@ -70,7 +70,7 @@ public class TruckController {
 
 
     @GetMapping("/update/{truckId}")
-    public String showUpdateTruckDriverForm(@PathVariable Long truckId, Model model) {
+    public String showUpdateTruckForm(@PathVariable Long truckId, Model model) {
         Truck truck = truckDao.findByIdTruck(truckId);
         if (truck != null) {
             model.addAttribute("truck", truck);
@@ -82,7 +82,7 @@ public class TruckController {
     }
 
     @PostMapping("/update")
-    public String updateTruckDriver(@ModelAttribute Truck truck, @RequestParam Long truckId) {
+    public String updateTruck(@ModelAttribute Truck truck, @RequestParam Long truckId) {
         truck.setTruckId(truckId);
         truckDao.updateTruck(truck);
         return "redirect:/truck/list";

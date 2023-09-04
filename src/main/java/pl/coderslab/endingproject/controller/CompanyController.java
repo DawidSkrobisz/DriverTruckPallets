@@ -5,6 +5,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import pl.coderslab.endingproject.dao.CompanyDao;
 import pl.coderslab.endingproject.entity.Company;
+import pl.coderslab.endingproject.entity.Truck;
 
 import java.util.List;
 
@@ -31,19 +32,16 @@ public class CompanyController {
         return "redirect:/company/list";
     }
 
-
-
     @GetMapping("/list")
-    public String listTrucks(Model model) {
+    public String listCompanys(Model model) {
         List<Company> companys = companyDao.getAllCompanys();
         model.addAttribute("companys", companys);
         return "company/list";
     }
 
     @GetMapping("/get/{companyId}")
-    public String getTruck(@PathVariable Long companyId, Model model) {
+    public String getCompany(@PathVariable Long companyId, Model model) {
         Company company = companyDao.findByIdCompany(companyId);
-
         if (company != null) {
             model.addAttribute("company", company);
             return "company/get";
@@ -52,13 +50,23 @@ public class CompanyController {
         }
     }
 
-    @ResponseBody
+    @GetMapping("/update/{companyId}")
+    public String showUpdateCompanyForm(@PathVariable Long companyId, Model model) {
+        Company company = companyDao.findByIdCompany(companyId);
+        if (company != null) {
+            model.addAttribute("company", company);
+            model.addAttribute("companyId", companyId);
+            return "company/update";
+        } else {
+            return "error";
+        }
+    }
+
     @PostMapping("/update")
-    public Company updateCompany() {
-        Company company = companyDao.findByIdCompany(1L);
-        company.setCompanyName("Oskroba");
+    public String updateCompany(@ModelAttribute Company company, @RequestParam Long companyId) {
+        company.setCompanyId(companyId);
         companyDao.updateCompany(company);
-        return company;
+        return "redirect:/company/list";
     }
 
     @GetMapping("/delete")
@@ -69,5 +77,4 @@ public class CompanyController {
         }
         return "redirect:/company/list";
     }
-
 }

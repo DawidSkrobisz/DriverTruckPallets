@@ -15,7 +15,6 @@ public class CompanyDao {
     @PersistenceContext
     private EntityManager entityManager;
 
-
     public void saveCompany(Company company) {
         entityManager.merge(company);
     }
@@ -36,6 +35,4 @@ public class CompanyDao {
         TypedQuery<Company> query = entityManager.createQuery("SELECT t FROM Company t", Company.class);
         return query.getResultList();
     }
-
-
 }

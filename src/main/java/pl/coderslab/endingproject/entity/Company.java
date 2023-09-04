@@ -38,5 +38,4 @@ public class Company {
 
     @OneToMany(mappedBy = "company")
     private List<Loading> loadings = new ArrayList<>();
-
 }
