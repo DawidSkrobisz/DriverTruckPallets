@@ -15,7 +15,6 @@ public class TruckDao {
     @PersistenceContext
     private EntityManager entityManager;
 
-
     public void saveTruck(Truck truck) {
         entityManager.merge(truck);
     }

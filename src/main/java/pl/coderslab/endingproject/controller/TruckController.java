@@ -1,10 +1,12 @@
 package pl.coderslab.endingproject.controller;
 
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import pl.coderslab.endingproject.dao.TruckDao;
 import org.springframework.stereotype.Controller;
 import pl.coderslab.endingproject.entity.Truck;
+import pl.coderslab.endingproject.entity.TruckDriver;
 
 import java.time.Instant;
 import java.time.LocalDate;
@@ -29,17 +31,13 @@ public class TruckController {
     }
 
     @RequestMapping("/add")
-
     public String addTruck(
             @RequestParam String truckModel,
             @RequestParam String truckPlates,
             @RequestParam String vinNumber,
-            @RequestParam String serviceDateStr,
-            @RequestParam String insuranceDateStr,
+            @RequestParam @DateTimeFormat(pattern = "yyyy-MM-dd") LocalDate serviceDate,
+            @RequestParam @DateTimeFormat(pattern = "yyyy-MM-dd") LocalDate insuranceDate,
             @RequestParam int acctualSaldoPallets) {
-
-        Instant serviceDate = LocalDate.parse(serviceDateStr).atStartOfDay().atZone(ZoneId.systemDefault()).toInstant();
-        Instant insuranceDate = LocalDate.parse(insuranceDateStr).atStartOfDay().atZone(ZoneId.systemDefault()).toInstant();
 
         Truck truck = new Truck();
         truck.setTruckModel(truckModel);
@@ -55,7 +53,6 @@ public class TruckController {
     @GetMapping("/details/{truckId}")
     public String truckDetails(@PathVariable Long truckId, Model model) {
         Truck truck = truckDao.findByIdTruck(truckId);
-
         if (truck != null) {
             model.addAttribute("truck", truck);
             return "truck/get-truck";
@@ -72,18 +69,23 @@ public class TruckController {
     }
 
 
-    @PostMapping("/update")
-    public String updateTruck(
-            @RequestParam Long truckId,
-            @RequestParam String newTruckModel) {
+    @GetMapping("/update/{truckId}")
+    public String showUpdateTruckDriverForm(@PathVariable Long truckId, Model model) {
         Truck truck = truckDao.findByIdTruck(truckId);
         if (truck != null) {
-            truck.setTruckModel(newTruckModel);
-            truckDao.updateTruck(truck);
-            return "Zaktualizowano ciężarówkę o ID " + truckId;
+            model.addAttribute("truck", truck);
+            model.addAttribute("truckId", truckId);
+            return "truck/update";
         } else {
-            return "Ciężarówka o ID nie istnieje";
+            return "error";
         }
+    }
+
+    @PostMapping("/update")
+    public String updateTruckDriver(@ModelAttribute Truck truck, @RequestParam Long truckId) {
+        truck.setTruckId(truckId);
+        truckDao.updateTruck(truck);
+        return "redirect:/truck/list";
     }
 
 

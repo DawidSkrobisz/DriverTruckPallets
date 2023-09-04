@@ -3,7 +3,7 @@ package pl.coderslab.endingproject.entity;
 import jakarta.persistence.*;
 import lombok.*;
 import org.jetbrains.annotations.NotNull;
-import java.time.Instant;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -34,11 +34,11 @@ public class Truck {
 
     @NotNull
     @Column(name="serviceDate")
-    public Instant serviceDate;
+    public LocalDate serviceDate;
 
     @NotNull
     @Column(name="insuranceDate")
-    public Instant insuranceDate;
+    public LocalDate insuranceDate;
 
     @NotNull
     @Column(name="acctualSaldoPallets")
@@ -59,5 +59,4 @@ public class Truck {
 
      @OneToMany(mappedBy = "truck")
     private List<Loading> loadings = new ArrayList<>();
-
 }
