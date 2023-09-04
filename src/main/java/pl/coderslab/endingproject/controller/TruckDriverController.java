@@ -35,6 +35,7 @@ public class TruckDriverController {
     public String addTruckDriver(
             @RequestParam String firstName,
             @RequestParam String lastName,
+            @RequestParam Long pesel,
             @RequestParam @DateTimeFormat(pattern = "yyyy-MM-dd") LocalDate psychoTestDate,
             @RequestParam @DateTimeFormat(pattern = "yyyy-MM-dd") LocalDate medTestDate,
             @RequestParam @DateTimeFormat(pattern = "yyyy-MM-dd") LocalDate driverLicenseDate) {
@@ -42,9 +43,10 @@ public class TruckDriverController {
         TruckDriver truckDriver = new TruckDriver();
         truckDriver.setFirstName(firstName);
         truckDriver.setLastName(lastName);
-        truckDriver.setPsychoTestDate(psychoTestDate.atStartOfDay().atZone(ZoneId.systemDefault()).toInstant());
-        truckDriver.setMedTestDate(medTestDate.atStartOfDay().atZone(ZoneId.systemDefault()).toInstant());
-        truckDriver.setDriverLicenseDate(driverLicenseDate.atStartOfDay().atZone(ZoneId.systemDefault()).toInstant());
+        truckDriver.setPesel(pesel);
+        truckDriver.setPsychoTestDate(psychoTestDate);
+        truckDriver.setMedTestDate(medTestDate);
+        truckDriver.setDriverLicenseDate(driverLicenseDate);
 
         truckDriverDao.saveTruckDriver(truckDriver);
         return "redirect:/truckdriver/list";
@@ -72,9 +74,9 @@ public class TruckDriverController {
     @GetMapping("/update/{driverId}")
     public String showUpdateTruckDriverForm(@PathVariable Long driverId, Model model) {
         TruckDriver truckDriver = truckDriverDao.getTruckDriver(driverId);
-
         if (truckDriver != null) {
             model.addAttribute("truckDriver", truckDriver);
+            model.addAttribute("driverId", driverId);
             return "truckdriver/update";
         } else {
             return "error";
@@ -82,11 +84,12 @@ public class TruckDriverController {
     }
 
     @PostMapping("/update")
-    public String updateTruckDriver(@ModelAttribute TruckDriver truckDriver) {
+    public String updateTruckDriver(@ModelAttribute TruckDriver truckDriver, @RequestParam Long driverId) {
+        // Ustaw identyfikator kierowcy
+        truckDriver.setDriverId(driverId);
         truckDriverDao.updateTruckDriver(truckDriver);
         return "redirect:/truckdriver/list";
     }
-
 
     @GetMapping("/delete")
     public String deleteTruckDriver(@RequestParam Long id) {
@@ -96,6 +99,4 @@ public class TruckDriverController {
         }
         return "redirect:/truckdriver/list";
     }
-
-
 }

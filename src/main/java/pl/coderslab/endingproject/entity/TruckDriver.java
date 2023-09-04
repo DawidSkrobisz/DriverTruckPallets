@@ -7,6 +7,7 @@ import org.hibernate.validator.constraints.pl.PESEL;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import java.time.Instant;
+import java.time.LocalDate;
 
 @Entity
 @Table(name = "driver")
@@ -31,18 +32,15 @@ public class TruckDriver {
 
     @NotNull
     @Column(name = "psychoTestDate")
-    @DateTimeFormat(pattern = "yyyy-MM-dd")
-    public Instant psychoTestDate;
+    public LocalDate psychoTestDate;
 
     @NotNull
     @Column(name = "medTestDate")
-    @DateTimeFormat(pattern = "yyyy-MM-dd")
-    public Instant medTestDate;
+    public LocalDate medTestDate;
 
     @NotNull
     @Column(name = "driverLicenseDate")
-    @DateTimeFormat(pattern = "yyyy-MM-dd")
-    public Instant driverLicenseDate;
+    public LocalDate driverLicenseDate;
 
     @PESEL
     @Column(name = "pesel")
