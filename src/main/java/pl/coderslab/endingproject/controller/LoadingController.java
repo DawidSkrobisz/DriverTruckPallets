@@ -60,10 +60,19 @@ public class LoadingController {
     }
 
     @GetMapping("/list")
-    public String listTrucks(Model model) {
+    public String listLoadings(Model model) {
         List<Loading> loadings = loadingDao.getAllLoadings();
         model.addAttribute("loadings", loadings);
         return "loading/list";
+    }
+
+    @GetMapping("/delete")
+    public String deleteLoading(@RequestParam Long id) {
+        Loading loading = loadingDao.findByIdLoading(id);
+        if (loading != null) {
+            loadingDao.deleteLoading(loading);
+        }
+        return "redirect:/palette/list";
     }
 
 }
