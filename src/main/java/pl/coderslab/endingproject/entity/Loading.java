@@ -20,12 +20,6 @@ public class Loading {
     public Long paletteId;
 
     @NotNull
-    public String companyName;
-
-    @NotNull
-    public String truckPlates;
-
-    @NotNull
     public Integer loadedPallets;
 
     @NotNull

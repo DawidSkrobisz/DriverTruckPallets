@@ -78,8 +78,8 @@
             <th>Akcje</th>
         </tr>
         <tr th:each="loading : ${loadings}">
-            <td><a th:href="@{|/palette/get/${loading.paletteId}|}"  th:text="${loading.companyName}"></a></td>
-            <td th:text="${loading.truckPlates}"></td>
+            <td><a th:href="@{|/palette/get/${loading.paletteId}|}"  th:text="${loading.company.companyName}"></a></td>
+            <td th:text="${loading.truck.truckPlates}"></td>
             <td th:text="${loading.loadedPallets}"></td>
             <td th:text="${loading.loadingDate}"></td>
             <td th:text="${loading.loadingNumber}"></td>

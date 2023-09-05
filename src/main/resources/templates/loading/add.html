@@ -78,44 +78,47 @@
 <body>
 <h1>Dodaj nowy załadunek</h1>
 <div class="container">
-<form action="/palette/add" method="post" th:object="${loading}">
-    <label for="companyName">Nazwa firmy:</label>
-    <select id="companyName" name="companyName" required>
-        <option th:each="company : ${companies}" th:value="${company.companyName}" th:text="${company.companyName}"></option>
-    </select><br>
+    <form action="/palette/add" method="post" th:object="${loading}">
+        <label for="company">Nazwa firmy:</label>
+        <select id="company" name="company" required>
+            <option th:each="company : ${companies}" th:value="${company.companyId}"
+                    th:text="${company.companyName}"></option>
+        </select><br>
 
-    <label for="truckPlates">Numery rejestracyjne:</label>
-    <select id="truckPlates" name="truckPlates" required>
-        <option th:each="truck : ${trucks}" th:value="${truck.truckPlates}" th:text="${truck.truckPlates}"></option>
-    </select><br>
+        <label for="truck">Numery rejestracyjne:</label>
+        <select id="truck" name="truck" required>
+            <option th:each="truck : ${trucks}" th:value="${truck.truckId}" th:text="${truck.truckPlates}"></option>
+        </select>
 
-    <label for="loadedPallets">Ilość palet załadowanych:</label>
-    <input type="number" id="loadedPallets" name="loadedPallets" required><br>
+        <!--<p><strong>Ilość załadowanych palet:</strong> <span th:text="${truck.acctualSaldoPallets}"></span></p>-->
 
-    <label for="exchangedPallets">Ilość palet wymienionych:</label>
-    <input type="number" id="exchangedPallets" name="exchangedPallets" required><br>
+        <label for="loadedPallets">Ilość palet załadowanych:</label>
+        <input type="number" id="loadedPallets" name="loadedPallets" required><br>
 
-    <label for="returnedPallets">Ilość palet zwróconych:</label>
-    <input type="number" id="returnedPallets" name="returnedPallets" required><br>
+        <label for="exchangedPallets">Ilość palet wymienionych:</label>
+        <input type="number" id="exchangedPallets" name="exchangedPallets" required><br>
 
-    <label for="loadingDate">Data załadunku:</label>
-    <input type="date" id="loadingDate" name="loadingDate" required><br>
+        <label for="returnedPallets">Ilość palet zwróconych:</label>
+        <input type="number" id="returnedPallets" name="returnedPallets" required><br>
 
-    <label for="loadingNumber">Numer załadunku:</label>
-    <input type="text" id="loadingNumber" name="loadingNumber" required><br>
+        <label for="loadingDate">Data załadunku:</label>
+        <input type="date" id="loadingDate" name="loadingDate" required><br>
 
-    <label for="status">Status:</label>
-    <select id="status" name="status" required>
-        <option value="NEW">Nowy</option>
-        <option value="COMPLETED">Zakończony</option>
-        <option value="ARCHIVED">Zarchiwizowany</option>
-    </select><br>
+        <label for="loadingNumber">Numer załadunku:</label>
+        <input type="text" id="loadingNumber" name="loadingNumber" required><br>
 
-    <button type="submit">Dodaj załadunek</button>
-</form>
+        <label for="status">Status:</label>
+        <select id="status" name="status" required>
+            <option value="NEW">Nowy</option>
+            <option value="COMPLETED">Zakończony</option>
+            <option value="ARCHIVED">Zarchiwizowany</option>
+        </select><br>
 
-<a href="/palette/list">Powrót do listy załadunków</a>
-<a href="/index.html">Wróć na stronę główną</a>
+        <button type="submit">Dodaj załadunek</button>
+    </form>
+
+    <a href="/palette/list">Powrót do listy załadunków</a>
+    <a href="/index.html">Wróć na stronę główną</a>
 </div>
 </body>
 </html>
