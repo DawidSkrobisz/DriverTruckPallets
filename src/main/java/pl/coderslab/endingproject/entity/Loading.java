@@ -47,7 +47,7 @@ public class Loading {
 
     @Column(name = "saldoFromLoading")
     public Integer saldoPallets() {
-        return exchangedPallets - returnedPallets;
+        return returnedPallets - exchangedPallets;
     }
 
     @NotNull

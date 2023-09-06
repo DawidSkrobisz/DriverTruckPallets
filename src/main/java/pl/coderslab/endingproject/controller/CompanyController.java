@@ -1,23 +1,24 @@
 package pl.coderslab.endingproject.controller;
 
+import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import pl.coderslab.endingproject.dao.CompanyDao;
+import pl.coderslab.endingproject.dao.LoadingDao;
 import pl.coderslab.endingproject.entity.Company;
+import pl.coderslab.endingproject.entity.Loading;
 import pl.coderslab.endingproject.entity.Truck;
 
 import java.util.List;
 
+@AllArgsConstructor
 @Controller
 @RequestMapping("/company")
 public class CompanyController {
 
     private CompanyDao companyDao;
-
-    public CompanyController(CompanyDao companyDao) {
-        this.companyDao = companyDao;
-    }
+    private LoadingDao loadingDao;
 
     @GetMapping("/add")
     public String formAddCompany(Model model) {
@@ -43,6 +44,8 @@ public class CompanyController {
     public String getCompany(@PathVariable Long companyId, Model model) {
         Company company = companyDao.findByIdCompany(companyId);
         if (company != null) {
+            Integer saldo = loadingDao.findAcctualPalletsSaldo(company);
+            model.addAttribute("saldo", saldo);
             model.addAttribute("company", company);
             return "company/get";
         } else {

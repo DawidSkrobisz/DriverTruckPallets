@@ -86,11 +86,9 @@
         </select><br>
 
         <label for="truck">Numery rejestracyjne:</label>
-        <select id="truck" name="truck" required>
+        <select id="truck" name="truck" th:attr="onchange='onSelectChange()'" required>
             <option th:each="truck : ${trucks}" th:value="${truck.truckId}" th:text="${truck.truckPlates}"></option>
         </select>
-
-        <!--<p><strong>Ilość załadowanych palet:</strong> <span th:text="${truck.acctualSaldoPallets}"></span></p>-->
 
         <label for="loadedPallets">Ilość palet załadowanych:</label>
         <input type="number" id="loadedPallets" name="loadedPallets" required><br>

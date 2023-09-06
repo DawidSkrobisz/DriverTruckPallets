@@ -35,4 +35,6 @@ public class TruckDao {
         TypedQuery<Truck> query = entityManager.createQuery("SELECT t FROM Truck t", Truck.class);
         return query.getResultList();
     }
+
+
 }

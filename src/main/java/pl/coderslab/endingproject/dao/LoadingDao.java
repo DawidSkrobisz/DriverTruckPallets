@@ -8,7 +8,9 @@ import jakarta.transaction.Transactional;
 import org.springframework.stereotype.Repository;
 import pl.coderslab.endingproject.entity.Company;
 import pl.coderslab.endingproject.entity.Loading;
+import pl.coderslab.endingproject.entity.Truck;
 
+import java.awt.print.Book;
 import java.util.List;
 
 @Repository
@@ -30,18 +32,34 @@ public class LoadingDao {
     }
 
     public void deleteLoading(Loading loading) {
-        entityManager.remove(entityManager.contains(loading) ? loading: entityManager.merge(loading));
-    }
-
-    public List<Company> getAllCompanies() {
-        TypedQuery<Company> query = entityManager.createQuery("SELECT c FROM Company c", Company.class);
-        return query.getResultList();
+        entityManager.remove(entityManager.contains(loading) ? loading : entityManager.merge(loading));
     }
 
     public List<Loading> getAllLoadings() {
         TypedQuery<Loading> query = entityManager.createQuery("SELECT l FROM Loading l", Loading.class);
         return query.getResultList();
     }
-    
 
+
+    public Integer findAcctualPalletsSaldo(Company company) {
+        List<Loading> loadings = entityManager.createQuery("SELECT l FROM Loading l WHERE l.company = :company", Loading.class)
+                .setParameter("company", company)
+                .getResultList();
+        Integer saldo = 0;
+        for (Loading loading : loadings) {
+            saldo = saldo + loading.saldoPallets();
+        }
+        return saldo;
+    }
+
+    public Integer findAcctualPalletsSaldo(Truck truck) {
+        List<Loading> loadings = entityManager.createQuery("SELECT l FROM Loading l WHERE l.truck = :truck", Loading.class)
+                .setParameter("truck", truck)
+                .getResultList();
+        Integer saldo = truck.getAcctualSaldoPallets();
+        for (Loading loading : loadings) {
+            saldo = saldo + loading.saldoPallets();
+        }
+        return saldo;
+    }
 }
