@@ -36,7 +36,7 @@ public class TruckDao {
         return query.getResultList();
     }
 
-    public List<Truck> getTruckWithStatusNew() {
+    public List<Truck> getTruckWithoutStatusNew() {
         TypedQuery<Truck> query = entityManager.createQuery("SELECT t FROM Truck t where not exists (from Loading l where t=l.truck and l.status='NEW')", Truck.class);
         return query.getResultList();
     }

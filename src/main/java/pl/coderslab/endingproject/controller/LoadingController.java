@@ -9,7 +9,6 @@ import pl.coderslab.endingproject.dao.TruckDao;
 import pl.coderslab.endingproject.entity.Company;
 import pl.coderslab.endingproject.entity.Loading;
 import pl.coderslab.endingproject.entity.Truck;
-import pl.coderslab.endingproject.entity.TruckDriver;
 
 import java.util.List;
 
@@ -35,7 +34,7 @@ public class LoadingController {
         List<Company> companies = companyDao.getAllCompanys();
         model.addAttribute("companies", companies);
 
-        List<Truck> trucks = truckDao.getTruckWithStatusNew();
+        List<Truck> trucks = truckDao.getTruckWithoutStatusNew();
         model.addAttribute("trucks", trucks);
 
         return "loading/add";
@@ -71,7 +70,7 @@ public class LoadingController {
     public String showUpdateLoadingForm(@PathVariable Long loadingId, Model model) {
         Loading loading = loadingDao.findByIdLoading(loadingId);
         List<Company> companies = companyDao.getAllCompanys();
-        List<Truck> trucks = truckDao.getAllTrucks();
+        List<Truck> trucks = truckDao.getTruckWithoutStatusNew();
 
         if (loading != null) {
             model.addAttribute("loading", loading);
