@@ -81,18 +81,20 @@
 </script>
 <body>
 <div class="container">
-    <form action="/palette/update/" method="post" th:object="${loading}">
+    <form action="/palette/update" method="post" th:object="${loading}">
 
-
+        <input type="hidden" id="loadingId" name="loadingId" th:value="${loading.paletteId}"/>
 
         <label for="company">Nazwa firmy:</label>
         <select id="company" name="company" required>
-            <option th:each="company : ${companies}" th:value="${company.companyName}"
-                    th:text="${company.companyName}"></option>
+            <option th:value="${loading.company.companyId}" th:text="${loading.company.companyName}" th:selected="selected"></option>
+            <option th:each="company : ${companies}" th:value="${company.companyId}"
+                    th:text="${company.companyName}" ></option>
         </select><br>
 
         <label for="truck">Numery rejestracyjne:</label>
         <select id="truck" name="truck" th:attr="onchange='onSelectChange()'" required>
+            <option th:value="${loading.truck.truckId}" th:text="${loading.truck.truckPlates}" th:selected="selected"></option>
             <option th:each="truck : ${trucks}" th:value="${truck.truckId}" th:text="${truck.truckPlates}"></option>
         </select>
 
@@ -113,6 +115,7 @@
 
         <label for="status">Status:</label>
         <select id="status" name="status" required>
+            <option th:value="${loading.status}" th:text="${loading.status}" th:selected="selected"></option>
             <option value="NEW">Nowy</option>
             <option value="COMPLETED">Zakończony</option>
             <option value="ARCHIVED">Zarchiwizowany</option>

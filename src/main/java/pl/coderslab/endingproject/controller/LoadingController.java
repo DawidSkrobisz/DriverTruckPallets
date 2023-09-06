@@ -35,7 +35,7 @@ public class LoadingController {
         List<Company> companies = companyDao.getAllCompanys();
         model.addAttribute("companies", companies);
 
-        List<Truck> trucks = truckDao.getAllTrucks();
+        List<Truck> trucks = truckDao.getTruckWithStatusNew();
         model.addAttribute("trucks", trucks);
 
         return "loading/add";
