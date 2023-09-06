@@ -90,6 +90,10 @@
             <option th:each="truck : ${trucks}" th:value="${truck.truckId}" th:text="${truck.truckPlates}"></option>
         </select>
 
+        <div class="another-div">
+            <p>You have selected: <span id="selected-institution"></span></p>
+        </div>
+
         <label for="loadedPallets">Ilość palet załadowanych:</label>
         <input type="number" id="loadedPallets" name="loadedPallets" required><br>
 
@@ -118,5 +122,11 @@
     <a href="/palette/list">Powrót do listy załadunków</a>
     <a href="/index.html">Wróć na stronę główną</a>
 </div>
+<script>
+    document.getElementById("truck").addEventListener("change", function() {
+        var selectedValue = this.value;
+        document.getElementById("selected-institution").textContent = selectedValue;
+    });
+</script>
 </body>
 </html>
