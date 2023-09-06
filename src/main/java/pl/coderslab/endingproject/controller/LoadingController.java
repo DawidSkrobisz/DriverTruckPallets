@@ -9,6 +9,7 @@ import pl.coderslab.endingproject.dao.TruckDao;
 import pl.coderslab.endingproject.entity.Company;
 import pl.coderslab.endingproject.entity.Loading;
 import pl.coderslab.endingproject.entity.Truck;
+import pl.coderslab.endingproject.entity.TruckDriver;
 
 import java.util.List;
 
@@ -66,6 +67,29 @@ public class LoadingController {
         return "loading/list";
     }
 
+    @GetMapping("/update/{loadingId}")
+    public String showUpdateLoadingForm(@PathVariable Long loadingId, Model model) {
+        Loading loading = loadingDao.findByIdLoading(loadingId);
+        List<Company> companies = companyDao.getAllCompanys();
+        List<Truck> trucks = truckDao.getAllTrucks();
+
+        if (loading != null) {
+            model.addAttribute("loading", loading);
+            model.addAttribute("companies", companies);
+            model.addAttribute("trucks", trucks);
+            return "loading/update";
+        } else {
+            return "error";
+        }
+    }
+
+    @PostMapping("/update")
+    public String updateLoading(@ModelAttribute Loading loading, @RequestParam Long loadingId) {
+        loading.setPaletteId(loadingId);
+        loadingDao.updateLoading(loading);
+        return "redirect:/palette/list";
+    }
+
     @GetMapping("/delete")
     public String deleteLoading(@RequestParam Long id) {
         Loading loading = loadingDao.findByIdLoading(id);
@@ -74,5 +98,4 @@ public class LoadingController {
         }
         return "redirect:/palette/list";
     }
-
 }

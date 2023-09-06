@@ -27,8 +27,8 @@ public class LoadingDao {
         return entityManager.find(Loading.class, id);
     }
 
-    public void updateCompany(Company company) {
-        entityManager.merge(company);
+    public void updateLoading(Loading loading) {
+        entityManager.merge(loading);
     }
 
     public void deleteLoading(Loading loading) {

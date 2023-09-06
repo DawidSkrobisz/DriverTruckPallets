@@ -84,15 +84,10 @@
         <label for="companyVat">Numer NIP:</label>
         <input type="text" id="companyVat" th:value="${company.companyVat}" th:name="companyVat" required>
 
-        <label for="saldoPalletFromCompany">Saldo palet:</label>
-        <input type="number" id="saldoPalletFromCompany" th:value="${company.saldoPalletFromCompany}"
-               th:name="saldoPalletFromCompany"
-               required>
-
         <input type="submit" value="Aktualizuj firmę">
     </form>
     <p class="back-link">
-        <a href="/company/list">Wróć do listy ciężarówek</a>
+        <a href="/company/list">Wróć do listy firm</a>
     </p>
 </div>
 </body>
