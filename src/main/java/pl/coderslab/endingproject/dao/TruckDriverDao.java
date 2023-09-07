@@ -4,13 +4,9 @@ import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
 import jakarta.persistence.TypedQuery;
 import jakarta.transaction.Transactional;
-import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Repository;
-import pl.coderslab.endingproject.controller.TruckDriverController;
-import pl.coderslab.endingproject.entity.Company;
 import pl.coderslab.endingproject.entity.TruckDriver;
 
-import java.time.Instant;
 import java.util.List;
 
 @Repository

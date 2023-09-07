@@ -30,13 +30,10 @@ public class LoadingController {
     public String formAdd(Model model) {
         Loading loading = new Loading();
         model.addAttribute("loading", loading);
-
         List<Company> companies = companyDao.getAllCompanys();
         model.addAttribute("companies", companies);
-
         List<Truck> trucks = truckDao.getTruckWithoutStatusNew();
         model.addAttribute("trucks", trucks);
-
         return "loading/add";
     }
 
@@ -71,7 +68,6 @@ public class LoadingController {
         Loading loading = loadingDao.findByIdLoading(loadingId);
         List<Company> companies = companyDao.getAllCompanys();
         List<Truck> trucks = truckDao.getTruckWithoutStatusNew();
-
         if (loading != null) {
             model.addAttribute("loading", loading);
             model.addAttribute("companies", companies);

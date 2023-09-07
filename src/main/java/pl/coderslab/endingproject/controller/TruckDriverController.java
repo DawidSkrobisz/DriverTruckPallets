@@ -4,14 +4,10 @@ import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import pl.coderslab.endingproject.dao.TruckDriverDao;
-import pl.coderslab.endingproject.entity.Company;
 import pl.coderslab.endingproject.entity.TruckDriver;
 import org.springframework.web.bind.annotation.*;
 
-import java.time.Instant;
 import java.time.LocalDate;
-import java.time.ZoneId;
-import java.time.format.DateTimeFormatter;
 import java.util.List;
 
 @Controller
@@ -39,7 +35,6 @@ public class TruckDriverController {
             @RequestParam @DateTimeFormat(pattern = "yyyy-MM-dd") LocalDate psychoTestDate,
             @RequestParam @DateTimeFormat(pattern = "yyyy-MM-dd") LocalDate medTestDate,
             @RequestParam @DateTimeFormat(pattern = "yyyy-MM-dd") LocalDate driverLicenseDate) {
-
         TruckDriver truckDriver = new TruckDriver();
         truckDriver.setFirstName(firstName);
         truckDriver.setLastName(lastName);
@@ -47,7 +42,6 @@ public class TruckDriverController {
         truckDriver.setPsychoTestDate(psychoTestDate);
         truckDriver.setMedTestDate(medTestDate);
         truckDriver.setDriverLicenseDate(driverLicenseDate);
-
         truckDriverDao.saveTruckDriver(truckDriver);
         return "redirect:/truckdriver/list";
     }
@@ -62,7 +56,6 @@ public class TruckDriverController {
     @GetMapping("/get/{driverId}")
     public String driverDetails(@PathVariable Long driverId, Model model) {
         TruckDriver truckDriver = truckDriverDao.getTruckDriver(driverId);
-
         if (truckDriver != null) {
             model.addAttribute("truckDriver", truckDriver);
             return "truckdriver/get";
@@ -85,7 +78,6 @@ public class TruckDriverController {
 
     @PostMapping("/update")
     public String updateTruckDriver(@ModelAttribute TruckDriver truckDriver, @RequestParam Long driverId) {
-        // Ustaw identyfikator kierowcy
         truckDriver.setDriverId(driverId);
         truckDriverDao.updateTruckDriver(truckDriver);
         return "redirect:/truckdriver/list";

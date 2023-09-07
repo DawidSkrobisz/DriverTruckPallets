@@ -3,14 +3,12 @@ package pl.coderslab.endingproject.dao;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
 import jakarta.persistence.TypedQuery;
-import jakarta.persistence.criteria.CriteriaBuilder;
 import jakarta.transaction.Transactional;
 import org.springframework.stereotype.Repository;
 import pl.coderslab.endingproject.entity.Company;
 import pl.coderslab.endingproject.entity.Loading;
 import pl.coderslab.endingproject.entity.Truck;
 
-import java.awt.print.Book;
 import java.util.List;
 
 @Repository
@@ -40,7 +38,6 @@ public class LoadingDao {
         return query.getResultList();
     }
 
-
     public Integer findAcctualPalletsSaldo(Company company) {
         List<Loading> loadings = entityManager.createQuery("SELECT l FROM Loading l WHERE l.company = :company", Loading.class)
                 .setParameter("company", company)
@@ -52,6 +49,7 @@ public class LoadingDao {
         return saldo;
     }
 
+    //todo
     public Integer findAcctualPalletsSaldo(Truck truck) {
         List<Loading> loadings = entityManager.createQuery("SELECT l FROM Loading l WHERE l.truck = :truck", Loading.class)
                 .setParameter("truck", truck)

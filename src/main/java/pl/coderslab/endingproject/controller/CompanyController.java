@@ -7,8 +7,6 @@ import org.springframework.web.bind.annotation.*;
 import pl.coderslab.endingproject.dao.CompanyDao;
 import pl.coderslab.endingproject.dao.LoadingDao;
 import pl.coderslab.endingproject.entity.Company;
-import pl.coderslab.endingproject.entity.Loading;
-import pl.coderslab.endingproject.entity.Truck;
 
 import java.util.List;
 
@@ -27,7 +25,7 @@ public class CompanyController {
         return "company/add";
     }
 
-    @RequestMapping("/add")
+    @PostMapping("/add")
     public String addCompany(@ModelAttribute Company company) {
         companyDao.saveCompany(company);
         return "redirect:/company/list";

@@ -6,11 +6,8 @@ import org.springframework.web.bind.annotation.*;
 import pl.coderslab.endingproject.dao.TruckDao;
 import org.springframework.stereotype.Controller;
 import pl.coderslab.endingproject.entity.Truck;
-import pl.coderslab.endingproject.entity.TruckDriver;
 
-import java.time.Instant;
 import java.time.LocalDate;
-import java.time.ZoneId;
 import java.util.List;
 
 @Controller
@@ -38,7 +35,6 @@ public class TruckController {
             @RequestParam @DateTimeFormat(pattern = "yyyy-MM-dd") LocalDate serviceDate,
             @RequestParam @DateTimeFormat(pattern = "yyyy-MM-dd") LocalDate insuranceDate,
             @RequestParam int acctualSaldoPallets) {
-
         Truck truck = new Truck();
         truck.setTruckModel(truckModel);
         truck.setTruckPlates(truckPlates);
@@ -68,7 +64,6 @@ public class TruckController {
         return "truck/truck-list";
     }
 
-
     @GetMapping("/update/{truckId}")
     public String showUpdateTruckForm(@PathVariable Long truckId, Model model) {
         Truck truck = truckDao.findByIdTruck(truckId);
@@ -87,7 +82,6 @@ public class TruckController {
         truckDao.updateTruck(truck);
         return "redirect:/truck/list";
     }
-
 
     @GetMapping("/delete")
     public String deleteTruck(@RequestParam Long id) {

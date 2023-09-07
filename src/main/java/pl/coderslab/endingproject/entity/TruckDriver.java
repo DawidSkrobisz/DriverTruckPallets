@@ -43,5 +43,4 @@ public class TruckDriver {
     @PESEL
     @Column(name = "pesel")
     public Long pesel;
-
 }

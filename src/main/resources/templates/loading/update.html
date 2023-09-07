@@ -68,17 +68,6 @@
         }
     </style>
 </head>
-<script>
-
-    console.log(document.querySelector('#company').value);
-    console.log(document.querySelector('#truck').value);
-    console.log(document.querySelector('#loadedPallets').value);
-    console.log(document.querySelector('#exchangedPallets').value);
-    console.log(document.querySelector('#returnedPallets').value);
-    console.log(document.querySelector('#loadingDate').value);
-    console.log(document.querySelector('#loadingNumber').value);
-    console.log(document.querySelector('#status').value);
-</script>
 <body>
 <div class="container">
     <form action="/palette/update" method="post" th:object="${loading}">
@@ -116,9 +105,9 @@
         <label for="status">Status:</label>
         <select id="status" name="status" required>
             <option th:value="${loading.status}" th:text="${loading.status}" th:selected="selected"></option>
-            <option value="NEW">Nowy</option>
-            <option value="COMPLETED">Zakończony</option>
-            <option value="ARCHIVED">Zarchiwizowany</option>
+            <option value="NEW">NEW</option>
+            <option value="COMPLETED">COMPLETED</option>
+            <option value="ARCHIVED">ARCHIVED</option>
         </select><br>
 
         <button type="submit">Aktualizuj załadunek</button>

@@ -45,7 +45,6 @@ public class Loading {
     @JoinColumn(name = "truck_id")
     private Truck truck;
 
-
     public Integer saldoPallets() {
         return returnedPallets - exchangedPallets;
     }
