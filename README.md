@@ -1,4 +1,4 @@
-# FinalProjectDriverTruckPallets
+# DriverTruckPallets
 to aplikacja do zarządzania danymi związanych z przewozem i logistyką w firmie transportowej. 
 Aplikacja została stworzona w języku Java z wykorzystaniem SpringBoot. 
 Pozwala ona na zarządzanie kierowcami, ciężarówkami, firmami oraz załadunkami.
