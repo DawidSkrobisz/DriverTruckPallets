@@ -1,17 +1,17 @@
 package pl.coderslab.endingproject.controller;
 
+import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
+@AllArgsConstructor
 public class HomeController {
 
-    @GetMapping("/")
-    @ResponseBody
-    public String home() { return "home"; }
+    @RequestMapping("/")
+    public String homeAction(Model model) {
 
-    @GetMapping("/about")
-    @ResponseBody
-    public String about() { return "Here you can find some details for logged users"; }
-}  
+        return "index";
+    }
+}
