@@ -1,3 +1,4 @@
+/*
 package pl.coderslab.endingproject.security;
 
 import org.springframework.context.annotation.Configuration;
@@ -25,3 +26,4 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .permitAll();
     }
 }
+*/
